@@ -103,6 +103,9 @@ LafzonApp.init = function () {
 
     this.setupBookDownload();
 
+
+    this.setupThoughtSlider();
+
 };
 
 
@@ -2147,6 +2150,248 @@ LafzonApp.setupBookDownload = function () {
 
 };
 
+/* =========================================================
+   THOUGHTS SLIDER CONTROLS
+   ========================================================= */
+
+LafzonApp.setupThoughtSlider = function () {
+
+    const quoteContainer =
+        document.querySelector(".quote-container");
+
+    const quoteText =
+        document.querySelector(".quote-text");
+
+    const quoteAuthor =
+        document.querySelector(".quote-author");
+
+    if (!quoteContainer || !quoteText) return;
+
+    /* ---------------------------------------------------------
+       Create Previous / Next buttons
+       --------------------------------------------------------- */
+
+    let previousButton =
+        quoteContainer.querySelector(".quote-prev");
+
+    let nextButton =
+        quoteContainer.querySelector(".quote-next");
+
+    if (!previousButton) {
+
+        previousButton =
+            document.createElement("button");
+
+        previousButton.className =
+            "quote-arrow quote-prev";
+
+        previousButton.type = "button";
+
+        previousButton.setAttribute(
+            "aria-label",
+            "Previous thought"
+        );
+
+        previousButton.innerHTML = "‹";
+
+        quoteContainer.appendChild(
+            previousButton
+        );
+    }
+
+    if (!nextButton) {
+
+        nextButton =
+            document.createElement("button");
+
+        nextButton.className =
+            "quote-arrow quote-next";
+
+        nextButton.type = "button";
+
+        nextButton.setAttribute(
+            "aria-label",
+            "Next thought"
+        );
+
+        nextButton.innerHTML = "›";
+
+        quoteContainer.appendChild(
+            nextButton
+        );
+    }
+
+
+    /* ---------------------------------------------------------
+       Slider animation
+       --------------------------------------------------------- */
+
+    const changeThought = direction => {
+
+        if (!LafzonApp.quotes.length) return;
+
+        quoteText.classList.add(
+            direction === "next"
+                ? "thought-slide-next"
+                : "thought-slide-prev"
+        );
+
+        if (quoteAuthor) {
+
+            quoteAuthor.classList.add(
+                direction === "next"
+                    ? "thought-slide-next"
+                    : "thought-slide-prev"
+            );
+
+        }
+
+        setTimeout(() => {
+
+            LafzonApp.currentQuote =
+                (
+                    LafzonApp.currentQuote +
+                    (direction === "next" ? 1 : -1) +
+                    LafzonApp.quotes.length
+                ) %
+                LafzonApp.quotes.length;
+
+            const quote =
+                LafzonApp.quotes[
+                    LafzonApp.currentQuote
+                ];
+
+            quoteText.innerHTML =
+                quote.text.replace(
+                    /\n/g,
+                    "<br>"
+                );
+
+            if (quoteAuthor) {
+
+                quoteAuthor.textContent =
+                    quote.author;
+
+            }
+
+            /* Update dots */
+
+            const dots =
+                document.querySelectorAll(
+                    ".quote-dot"
+                );
+
+            dots.forEach((dot, index) => {
+
+                dot.classList.toggle(
+                    "active",
+                    index ===
+                    LafzonApp.currentQuote
+                );
+
+            });
+
+            quoteText.classList.remove(
+                "thought-slide-next",
+                "thought-slide-prev"
+            );
+
+            if (quoteAuthor) {
+
+                quoteAuthor.classList.remove(
+                    "thought-slide-next",
+                    "thought-slide-prev"
+                );
+
+            }
+
+        }, 180);
+
+    };
+
+
+    /* ---------------------------------------------------------
+       Button events
+       --------------------------------------------------------- */
+
+    previousButton.addEventListener(
+        "click",
+        event => {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            changeThought("prev");
+
+        }
+    );
+
+
+    nextButton.addEventListener(
+        "click",
+        event => {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            changeThought("next");
+
+        }
+    );
+
+
+    /* ---------------------------------------------------------
+       Touch swipe support
+       --------------------------------------------------------- */
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    quoteContainer.addEventListener(
+        "touchstart",
+        event => {
+
+            touchStartX =
+                event.changedTouches[0].screenX;
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    quoteContainer.addEventListener(
+        "touchend",
+        event => {
+
+            touchEndX =
+                event.changedTouches[0].screenX;
+
+            const difference =
+                touchEndX - touchStartX;
+
+            if (Math.abs(difference) < 50) {
+                return;
+            }
+
+            if (difference < 0) {
+
+                changeThought("next");
+
+            } else {
+
+                changeThought("prev");
+
+            }
+
+        },
+        {
+            passive: true
+        }
+    );
+
+};
 /* =========================================================
    24. CONSOLE MESSAGE
    ========================================================= */

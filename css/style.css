@@ -4470,3 +4470,213 @@ img {
 img:not(.image-error) + .image-fallback {
     display: none !important;
 }
+
+/* =========================================================
+   THOUGHTS SLIDER ARROWS
+   ========================================================= */
+
+.quote-container {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Arrow buttons */
+
+.quote-arrow {
+    position: absolute;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 46px;
+    height: 46px;
+
+    border: 1px solid rgba(126, 74, 80, 0.22);
+
+    border-radius: 50%;
+
+    background: rgba(255, 250, 247, 0.82);
+
+    color: #7e4a50;
+
+    font-family: Georgia, serif;
+
+    font-size: 32px;
+    line-height: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    z-index: 20;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease;
+
+    box-shadow:
+        0 8px 25px rgba(80, 45, 50, 0.08);
+
+    padding: 0;
+}
+
+
+/* Previous */
+
+.quote-prev {
+    left: 18px;
+}
+
+
+/* Next */
+
+.quote-next {
+    right: 18px;
+}
+
+
+/* Hover */
+
+.quote-arrow:hover {
+
+    background: #7e4a50;
+
+    color: #fffaf7;
+
+    transform:
+        translateY(-50%)
+        scale(1.08);
+
+    box-shadow:
+        0 10px 30px rgba(126, 74, 80, 0.20);
+
+}
+
+
+/* Click */
+
+.quote-arrow:active {
+
+    transform:
+        translateY(-50%)
+        scale(0.94);
+
+}
+
+
+/* Keyboard focus */
+
+.quote-arrow:focus-visible {
+
+    outline: 2px solid #b9898e;
+
+    outline-offset: 4px;
+
+}
+
+
+/* =========================================================
+   THOUGHT SLIDE ANIMATION
+   ========================================================= */
+
+.quote-text,
+.quote-author {
+
+    transition:
+        opacity 0.18s ease,
+        transform 0.18s ease;
+
+}
+
+
+/* Next */
+
+.thought-slide-next {
+
+    opacity: 0;
+
+    transform:
+        translateX(-28px);
+
+}
+
+
+/* Previous */
+
+.thought-slide-prev {
+
+    opacity: 0;
+
+    transform:
+        translateX(28px);
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .quote-container {
+
+        padding-left: 58px;
+        padding-right: 58px;
+
+    }
+
+
+    .quote-arrow {
+
+        width: 38px;
+        height: 38px;
+
+        font-size: 27px;
+
+    }
+
+
+    .quote-prev {
+
+        left: 10px;
+
+    }
+
+
+    .quote-next {
+
+        right: 10px;
+
+    }
+
+}
+
+
+/* Small phones */
+
+@media (max-width: 420px) {
+
+    .quote-container {
+
+        padding-left: 48px;
+        padding-right: 48px;
+
+    }
+
+
+    .quote-arrow {
+
+        width: 34px;
+        height: 34px;
+
+        font-size: 24px;
+
+    }
+
+}
