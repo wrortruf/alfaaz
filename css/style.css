@@ -11689,3 +11689,547 @@ img:not(.image-error) + .image-fallback {
 
 }
 
+/* =========================================================
+   MY WRITINGS — FINAL MOBILE OVERLAY FIX
+   ========================================================= */
+
+/*
+   IMPORTANT:
+   My Writings is a full-screen overlay.
+   It must completely cover the original website.
+*/
+
+.my-writings-page {
+    position: fixed !important;
+
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+
+    width: 100% !important;
+
+    /*
+       Do NOT use 100vh / 100dvh here.
+       top + bottom already define the exact viewport.
+    */
+    height: auto !important;
+    min-height: 100% !important;
+    max-height: none !important;
+
+    z-index: 2147483647 !important;
+
+    /*
+       The writings page itself is the scroll container.
+    */
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+
+    /*
+       Completely opaque background.
+       This prevents the original Home page from showing through.
+    */
+    background:
+        linear-gradient(
+            135deg,
+            #f7e9e5 0%,
+            #f2ddda 48%,
+            #ead0cf 100%
+        ) !important;
+
+    isolation: isolate !important;
+
+    /*
+       Prevent the old opening animation from
+       moving the full page.
+    */
+    transform: none !important;
+
+    box-sizing: border-box !important;
+
+    -webkit-overflow-scrolling: touch;
+
+    overscroll-behavior: contain;
+}
+
+
+/* =========================================================
+   OPEN STATE
+   ========================================================= */
+
+.my-writings-page.is-open {
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    pointer-events: auto !important;
+
+    transform: none !important;
+}
+
+
+/* =========================================================
+   PREVENT HOME PAGE FROM SCROLLING BEHIND WRITINGS
+   ========================================================= */
+
+body:has(.my-writings-page.is-open) {
+    overflow: hidden !important;
+
+    height: 100% !important;
+
+    overscroll-behavior: none !important;
+}
+
+
+/* =========================================================
+   WRITINGS HEADER
+   ========================================================= */
+
+.my-writings-page .writings-page-header {
+    position: sticky !important;
+
+    top: 0 !important;
+
+    z-index: 100 !important;
+
+    flex-shrink: 0;
+
+    width: 100%;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   WRITINGS CONTENT
+   ========================================================= */
+
+.my-writings-page > section,
+.my-writings-page > div {
+    position: relative;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.my-writings-page .writings-hero {
+    position: relative !important;
+
+    width: 100% !important;
+
+    /*
+       Hero can be screen-sized,
+       but must be allowed to grow if content needs it.
+    */
+    min-height: calc(100svh - 68px) !important;
+
+    height: auto !important;
+
+    max-height: none !important;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.my-writings-page .writings-about {
+    position: relative !important;
+
+    width: min(
+        1100px,
+        calc(100% - 50px)
+    ) !important;
+
+    height: auto !important;
+
+    min-height: 0 !important;
+
+    max-height: none !important;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   GENERAL WRITING SECTIONS
+   ========================================================= */
+
+.my-writings-page .writings-content-section {
+    position: relative !important;
+
+    width: 100%;
+
+    height: auto !important;
+
+    min-height: 0 !important;
+
+    max-height: none !important;
+
+    box-sizing: border-box;
+
+    overflow: visible;
+}
+
+
+/* =========================================================
+   VOICEOVERS
+   ========================================================= */
+
+.my-writings-page .voiceovers-section {
+    height: auto !important;
+
+    min-height: 0 !important;
+}
+
+
+/* =========================================================
+   SHAYARI
+   ========================================================= */
+
+.my-writings-page .shayari-section {
+    height: auto !important;
+
+    min-height: 0 !important;
+
+    overflow: visible !important;
+}
+
+
+.my-writings-page .shayari-collection {
+    height: auto !important;
+
+    min-height: 0 !important;
+}
+
+
+.my-writings-page .shayari-piece {
+    height: auto !important;
+
+    min-height: 250px;
+
+    max-height: none !important;
+}
+
+
+/* Long Shayari */
+.my-writings-page .shayari-piece.shayari-featured {
+    height: auto !important;
+
+    min-height: 0 !important;
+
+    max-height: none !important;
+}
+
+
+/* =========================================================
+   PHILOSOPHY
+   ========================================================= */
+
+.my-writings-page .writing-philosophy-section {
+    position: relative !important;
+
+    height: auto !important;
+
+    min-height: 0 !important;
+
+    max-height: none !important;
+}
+
+
+/* =========================================================
+   FEATURED WRITING
+   ========================================================= */
+
+.my-writings-page .featured-writing-section {
+    position: relative !important;
+
+    height: auto !important;
+
+    min-height: 65vh !important;
+
+    max-height: none !important;
+}
+
+
+/* =========================================================
+   FINAL SECTION
+   ========================================================= */
+
+.my-writings-page .writings-final-section {
+    position: relative !important;
+
+    height: auto !important;
+
+    min-height: 70vh !important;
+
+    max-height: none !important;
+
+    padding-bottom: 120px !important;
+}
+
+
+/* =========================================================
+   TOP BUTTON
+   ========================================================= */
+
+.my-writings-page .writings-top-button {
+    z-index: 200 !important;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .my-writings-page {
+        top: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+
+        width: 100% !important;
+
+        height: auto !important;
+
+        min-height: 100% !important;
+
+        max-height: none !important;
+
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+
+        transform: none !important;
+
+        /*
+           Important for Android Chrome.
+        */
+        min-height: 100svh !important;
+
+        background:
+            linear-gradient(
+                135deg,
+                #f7e9e5 0%,
+                #f2ddda 48%,
+                #ead0cf 100%
+            ) !important;
+    }
+
+
+    /*
+       Header remains inside the writings page.
+    */
+    .my-writings-page .writings-page-header {
+        height: 68px !important;
+
+        min-height: 68px !important;
+
+        position: sticky !important;
+
+        top: 0 !important;
+    }
+
+
+    /*
+       IMPORTANT:
+       Do not force the entire content to viewport height.
+    */
+    .my-writings-page .writings-hero,
+    .my-writings-page .writings-about,
+    .my-writings-page .writings-content-section,
+    .my-writings-page .writing-philosophy-section,
+    .my-writings-page .featured-writing-section,
+    .my-writings-page .writings-final-section {
+
+        height: auto !important;
+
+        max-height: none !important;
+    }
+
+
+    /*
+       Hero only gets minimum screen height.
+       If content becomes taller, it naturally grows.
+    */
+    .my-writings-page .writings-hero {
+        min-height: calc(100svh - 68px) !important;
+
+        padding:
+            70px 20px 90px !important;
+    }
+
+
+    /*
+       About section.
+    */
+    .my-writings-page .writings-about {
+        width: calc(100% - 40px) !important;
+
+        padding:
+            85px 0 !important;
+    }
+
+
+    /*
+       Normal writing sections.
+    */
+    .my-writings-page .writings-content-section {
+        width: 100% !important;
+
+        padding:
+            90px 20px !important;
+    }
+
+
+    /*
+       Shayari section.
+    */
+    .my-writings-page .shayari-section {
+        padding:
+            90px 20px !important;
+    }
+
+
+    /*
+       Long Shayari must NEVER be forced
+       into a fixed-height box.
+    */
+    .my-writings-page .shayari-piece.shayari-featured {
+        height: auto !important;
+
+        min-height: 0 !important;
+
+        max-height: none !important;
+
+        padding:
+            45px 25px !important;
+    }
+
+
+    /*
+       Featured writing.
+    */
+    .my-writings-page .featured-writing-section {
+        min-height: 60vh !important;
+
+        padding:
+            90px 20px !important;
+    }
+
+
+    /*
+       Final writing section.
+    */
+    .my-writings-page .writings-final-section {
+        min-height: 65vh !important;
+
+        padding:
+            90px 20px 130px !important;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 550px) {
+
+    .my-writings-page .writings-hero {
+        min-height: calc(100svh - 68px) !important;
+
+        padding:
+            65px 20px 80px !important;
+    }
+
+
+    .my-writings-page .writings-about {
+        width: calc(100% - 36px) !important;
+
+        padding:
+            75px 0 !important;
+    }
+
+
+    .my-writings-page .writings-content-section {
+        padding:
+            80px 18px !important;
+    }
+
+
+    .my-writings-page .shayari-section {
+        padding:
+            80px 18px !important;
+    }
+
+
+    .my-writings-page .shayari-piece {
+        min-height: 0 !important;
+
+        height: auto !important;
+
+        padding:
+            38px 25px !important;
+    }
+
+
+    .my-writings-page .shayari-piece.shayari-featured {
+        min-height: 0 !important;
+
+        height: auto !important;
+
+        padding:
+            42px 22px !important;
+    }
+
+
+    .my-writings-page .writings-final-section {
+        padding-bottom: 140px !important;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .my-writings-page .writings-about,
+    .my-writings-page .writings-content-section {
+        width: calc(100% - 32px) !important;
+    }
+
+
+    .my-writings-page .writings-content-section {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+
+    .my-writings-page .shayari-section {
+        width: 100% !important;
+
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+
+    .my-writings-page .shayari-piece.shayari-featured {
+        padding:
+            35px 18px !important;
+    }
+
+}
