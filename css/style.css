@@ -12807,3 +12807,912 @@ img:not(.image-error) + .image-fallback {
         transform: none !important;
     }
 }
+
+/* =========================================================
+   PREMIUM BOOK NAVIGATION
+   Lafzon ka safar
+   ========================================================= */
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(250, 244, 237, 0.97),
+            rgba(250, 244, 237, 0.91)
+        );
+
+    border-bottom: 1px solid rgba(133, 91, 84, 0.14);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* ---------------------------------------------------------
+   NAV CONTAINER
+   --------------------------------------------------------- */
+
+.nav-container {
+    width: min(1400px, calc(100% - 48px));
+    min-height: 82px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+/* ---------------------------------------------------------
+   BRAND
+   --------------------------------------------------------- */
+
+.nav-brand {
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    text-decoration: none;
+
+    line-height: 1.05;
+
+    color: #533d39;
+}
+
+.nav-brand-main {
+    font-family: "Playfair Display", Georgia, serif;
+
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.nav-brand-sub {
+    margin-top: 6px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 8px;
+    font-weight: 600;
+
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+
+    color: #a47770;
+}
+
+
+/* ---------------------------------------------------------
+   MAIN NAVIGATION
+   --------------------------------------------------------- */
+
+.main-navigation {
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+
+    height: 100%;
+}
+
+
+/* ---------------------------------------------------------
+   NAV LINKS
+   --------------------------------------------------------- */
+
+.nav-link {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+    padding: 0 14px;
+
+    border: 0;
+    border-radius: 999px;
+
+    background: transparent;
+
+    color: #735b56;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.nav-link:hover {
+    color: #4f3935;
+
+    background: rgba(176, 126, 118, 0.10);
+
+    transform: translateY(-1px);
+}
+
+.nav-link.active {
+    color: #583e39;
+
+    background: rgba(176, 126, 118, 0.13);
+}
+
+
+/* ---------------------------------------------------------
+   EXPLORE DROPDOWN
+   --------------------------------------------------------- */
+
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown-trigger {
+    gap: 7px;
+}
+
+.dropdown-arrow {
+    font-size: 15px;
+    line-height: 1;
+
+    transition: transform 0.25s ease;
+}
+
+.nav-dropdown:hover .dropdown-arrow,
+.nav-dropdown.open .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+
+/* ---------------------------------------------------------
+   DROPDOWN MENU
+   --------------------------------------------------------- */
+
+.nav-dropdown-menu {
+    position: absolute;
+
+    top: calc(100% + 14px);
+    right: 0;
+
+    width: min(850px, 90vw);
+
+    padding: 20px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 250, 246, 0.99),
+            rgba(247, 235, 228, 0.98)
+        );
+
+    border: 1px solid rgba(133, 91, 84, 0.14);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 24px 70px rgba(77, 48, 43, 0.15),
+        0 5px 20px rgba(77, 48, 43, 0.07);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+        translateY(-8px)
+        scale(0.98);
+
+    transform-origin: top right;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.22s ease,
+        visibility 0.22s ease,
+        transform 0.22s ease;
+}
+
+
+/* little floating bridge */
+
+.nav-dropdown-menu::before {
+    content: "";
+
+    position: absolute;
+
+    top: -8px;
+    right: 30px;
+
+    width: 16px;
+    height: 16px;
+
+    background: #fffaf6;
+
+    border-left: 1px solid rgba(133, 91, 84, 0.10);
+    border-top: 1px solid rgba(133, 91, 84, 0.10);
+
+    transform: rotate(45deg);
+}
+
+
+/* SHOW DROPDOWN */
+
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown.open .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    pointer-events: auto;
+}
+
+
+/* ---------------------------------------------------------
+   DROPDOWN GROUP
+   --------------------------------------------------------- */
+
+.dropdown-group {
+    position: relative;
+
+    padding: 5px;
+}
+
+.dropdown-group + .dropdown-group {
+    border-left: 1px solid rgba(133, 91, 84, 0.10);
+
+    padding-left: 16px;
+}
+
+.dropdown-group-title {
+    display: block;
+
+    margin: 3px 8px 11px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+
+    color: #ad7d75;
+}
+
+
+/* ---------------------------------------------------------
+   DROPDOWN LINK
+   --------------------------------------------------------- */
+
+.dropdown-link {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 9px 8px;
+
+    border-radius: 12px;
+
+    color: #624a45;
+
+    text-decoration: none;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        color 0.2s ease;
+}
+
+.dropdown-link:hover {
+    background: rgba(178, 126, 117, 0.10);
+
+    color: #4f3732;
+
+    transform: translateX(3px);
+}
+
+.dropdown-icon {
+    flex: 0 0 28px;
+
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: rgba(178, 126, 117, 0.09);
+
+    color: #a56f67;
+
+    font-size: 13px;
+}
+
+.dropdown-link span:last-child {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-link strong {
+    font-family: "Poppins", sans-serif;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    line-height: 1.3;
+}
+
+.dropdown-link small {
+    margin-top: 2px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 8px;
+    line-height: 1.3;
+
+    color: #a58b85;
+}
+
+
+/* special download */
+
+.dropdown-link-special {
+    margin-top: 5px;
+
+    background: rgba(178, 126, 117, 0.08);
+}
+
+.dropdown-link-special .dropdown-icon {
+    background: rgba(178, 126, 117, 0.15);
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE MENU BUTTON
+   --------------------------------------------------------- */
+
+.mobile-menu-button {
+    display: none;
+
+    width: 46px;
+    height: 46px;
+
+    padding: 0;
+
+    border: 1px solid rgba(133, 91, 84, 0.14);
+
+    border-radius: 50%;
+
+    background: rgba(255, 250, 246, 0.8);
+
+    cursor: pointer;
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.mobile-menu-button span {
+    width: 18px;
+    height: 1.5px;
+
+    border-radius: 10px;
+
+    background: #684d48;
+
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
+}
+
+
+/* hamburger → X */
+
+.site-header.mobile-open .mobile-menu-button span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+}
+
+.site-header.mobile-open .mobile-menu-button span:nth-child(2) {
+    opacity: 0;
+}
+
+.site-header.mobile-open .mobile-menu-button span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE NAVIGATION
+   --------------------------------------------------------- */
+
+.mobile-navigation {
+    display: none;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1150px) {
+
+    .nav-container {
+        width: min(100% - 32px, 1000px);
+    }
+
+    .nav-link {
+        padding: 0 9px;
+
+        font-size: 11px;
+    }
+
+    .nav-brand-main {
+        font-size: 19px;
+    }
+
+    .nav-dropdown-menu {
+        width: min(760px, 90vw);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .site-header {
+        border-bottom-color: rgba(133, 91, 84, 0.12);
+    }
+
+    .nav-container {
+        min-height: 70px;
+
+        width: calc(100% - 28px);
+    }
+
+    .main-navigation {
+        display: none;
+    }
+
+    .mobile-menu-button {
+        display: flex;
+    }
+
+    .mobile-navigation {
+        display: block;
+
+        position: absolute;
+
+        top: 100%;
+        left: 0;
+
+        width: 100%;
+
+        max-height: calc(100vh - 70px);
+
+        overflow-y: auto;
+
+        background:
+            linear-gradient(
+                180deg,
+                rgba(250, 244, 237, 0.99),
+                rgba(247, 235, 228, 0.99)
+            );
+
+        border-bottom: 1px solid rgba(133, 91, 84, 0.12);
+
+        box-shadow:
+            0 20px 50px rgba(77, 48, 43, 0.12);
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translateY(-10px);
+
+        pointer-events: none;
+
+        transition:
+            opacity 0.25s ease,
+            visibility 0.25s ease,
+            transform 0.25s ease;
+    }
+
+    .site-header.mobile-open .mobile-navigation {
+        opacity: 1;
+        visibility: visible;
+
+        transform: translateY(0);
+
+        pointer-events: auto;
+    }
+
+    .mobile-nav-inner {
+        width: calc(100% - 30px);
+
+        max-width: 600px;
+
+        margin: 0 auto;
+
+        padding: 15px 0 25px;
+    }
+
+
+    /* -----------------------------------------------------
+       MOBILE LINKS
+       ----------------------------------------------------- */
+
+    .mobile-nav-link {
+        min-height: 54px;
+
+        display: flex;
+        align-items: center;
+
+        gap: 15px;
+
+        padding: 0 13px;
+
+        border-bottom: 1px solid rgba(133, 91, 84, 0.08);
+
+        color: #604944;
+
+        font-family: "Playfair Display", Georgia, serif;
+
+        font-size: 17px;
+
+        text-decoration: none;
+
+        transition:
+            padding 0.2s ease,
+            color 0.2s ease,
+            background 0.2s ease;
+    }
+
+    .mobile-nav-link:hover {
+        padding-left: 18px;
+
+        color: #9b655d;
+
+        background: rgba(178, 126, 117, 0.06);
+    }
+
+    .mobile-nav-number {
+        min-width: 24px;
+
+        font-family: "Poppins", sans-serif;
+
+        font-size: 8px;
+        font-weight: 600;
+
+        letter-spacing: 0.12em;
+
+        color: #b0837b;
+    }
+
+
+    /* -----------------------------------------------------
+       MOBILE EXPLORE
+       ----------------------------------------------------- */
+
+    .mobile-explore {
+        border-bottom: 1px solid rgba(133, 91, 84, 0.08);
+    }
+
+    .mobile-explore-trigger {
+        width: 100%;
+
+        min-height: 54px;
+
+        padding: 0 13px;
+
+        border: 0;
+
+        background: transparent;
+
+        color: #604944;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        font-family: "Playfair Display", Georgia, serif;
+
+        font-size: 17px;
+
+        cursor: pointer;
+    }
+
+    .mobile-explore-trigger > span:first-child {
+        display: flex;
+        align-items: center;
+
+        gap: 15px;
+    }
+
+    .mobile-explore-arrow {
+        font-family: "Poppins", sans-serif;
+
+        font-size: 18px;
+
+        transition: transform 0.25s ease;
+    }
+
+    .mobile-explore.open .mobile-explore-arrow {
+        transform: rotate(180deg);
+    }
+
+
+    /* -----------------------------------------------------
+       MOBILE EXPLORE CONTENT
+       ----------------------------------------------------- */
+
+    .mobile-explore-content {
+        display: grid;
+
+        grid-template-rows: 0fr;
+
+        overflow: hidden;
+
+        padding: 0 13px;
+
+        transition:
+            grid-template-rows 0.3s ease,
+            padding 0.3s ease;
+    }
+
+    .mobile-explore-content::before {
+        content: "";
+    }
+
+    .mobile-explore-content {
+        visibility: hidden;
+    }
+
+    .mobile-explore.open .mobile-explore-content {
+        grid-template-rows: 1fr;
+
+        padding-top: 5px;
+        padding-bottom: 12px;
+
+        visibility: visible;
+    }
+
+    .mobile-explore-content a {
+        min-height: 42px;
+
+        display: flex;
+        align-items: center;
+
+        padding: 0 15px;
+
+        border-radius: 10px;
+
+        color: #795d57;
+
+        font-family: "Poppins", sans-serif;
+
+        font-size: 11px;
+
+        text-decoration: none;
+
+        opacity: 0;
+
+        transform: translateX(-5px);
+
+        transition:
+            opacity 0.2s ease,
+            transform 0.2s ease,
+            background 0.2s ease;
+    }
+
+    .mobile-explore.open .mobile-explore-content a {
+        opacity: 1;
+
+        transform: translateX(0);
+    }
+
+    .mobile-explore-content a:hover {
+        background: rgba(178, 126, 117, 0.08);
+
+        color: #513a35;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .nav-container {
+        width: calc(100% - 22px);
+
+        min-height: 64px;
+    }
+
+    .nav-brand-main {
+        font-size: 18px;
+    }
+
+    .nav-brand-sub {
+        font-size: 7px;
+
+        letter-spacing: 0.17em;
+    }
+
+    .mobile-menu-button {
+        width: 42px;
+        height: 42px;
+    }
+
+    .mobile-navigation {
+        max-height: calc(100vh - 64px);
+    }
+
+    .mobile-nav-link,
+    .mobile-explore-trigger {
+        min-height: 52px;
+
+        font-size: 16px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .site-header *,
+    .mobile-navigation,
+    .nav-dropdown-menu,
+    .nav-link,
+    .dropdown-link {
+        transition: none !important;
+    }
+}
+
+/* =========================================================
+   MOBILE — VERTICAL PAGE PROGRESS BAR
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    /* Main progress rail */
+    .progress-bar,
+    .page-progress,
+    .scroll-progress,
+    .reading-progress,
+    #progressBar,
+    #scrollProgress {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: fixed !important;
+        right: 5px !important;
+        top: 80px !important;
+        bottom: 25px !important;
+        width: 3px !important;
+        z-index: 9999 !important;
+    }
+
+}
+
+/* =========================================================
+   FUTURE ME — PERFORMANCE OPTIMIZATION
+   Keeps the design, removes unnecessary rendering load
+   ========================================================= */
+
+.future-me-section {
+    contain: layout paint;
+}
+
+/* Reduce expensive effects on the actual letter */
+.future-me-letter {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transform: translateZ(0);
+}
+
+/* Prevent expensive blur on pseudo-elements */
+.future-me-letter::before,
+.future-me-letter::after,
+.future-me-container::before,
+.future-me-container::after {
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* Keep reveal animation lightweight */
+.future-me-section .reveal {
+    transition:
+        opacity 0.45s ease,
+        transform 0.45s ease !important;
+}
+
+/* Don't animate huge shadows */
+.future-me-letter {
+    transition: opacity 0.3s ease !important;
+}
+
+/* =========================================================
+   MOBILE PERFORMANCE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .future-me-section {
+        contain: layout paint;
+    }
+
+    .future-me-letter {
+        transform: none !important;
+        box-shadow: 0 8px 25px rgba(90, 55, 55, 0.08) !important;
+    }
+
+    .future-me-letter::before,
+    .future-me-letter::after,
+    .future-me-container::before,
+    .future-me-container::after {
+        display: none !important;
+    }
+
+    .future-me-section .reveal {
+        transition:
+            opacity 0.35s ease,
+            transform 0.35s ease !important;
+    }
+}
+
+/* =========================================================
+   VERY LOW POWER / REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .future-me-section *,
+    .future-me-section *::before,
+    .future-me-section *::after {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+    }
+}
