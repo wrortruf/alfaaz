@@ -11688,3 +11688,1122 @@ img:not(.image-error) + .image-fallback {
     }
 
 }
+
+/* =========================================================
+   A MESSAGE FOR FUTURE ME
+   PREMIUM LETTER DESIGN
+   Text untouched — styling only
+   ========================================================= */
+
+.future-me-section {
+    position: relative;
+    overflow: hidden;
+    padding: 130px 24px 145px;
+
+    background:
+        radial-gradient(
+            circle at 8% 12%,
+            rgba(211, 153, 163, 0.20),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 92% 82%,
+            rgba(198, 139, 151, 0.17),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(255, 255, 255, 0.65),
+            transparent 55%
+        ),
+        linear-gradient(
+            135deg,
+            #fffaf7 0%,
+            #fcefeb 38%,
+            #f8e5e1 70%,
+            #fff8f4 100%
+        );
+
+    border-top: 1px solid rgba(133, 76, 91, 0.10);
+    border-bottom: 1px solid rgba(133, 76, 91, 0.10);
+}
+
+
+/* =========================================================
+   BACKGROUND DECORATION
+   ========================================================= */
+
+.future-me-section::before {
+    content: "";
+
+    position: absolute;
+    width: 500px;
+    height: 500px;
+
+    top: -260px;
+    left: -230px;
+
+    border-radius: 50%;
+
+    background: rgba(212, 153, 163, 0.13);
+
+    filter: blur(15px);
+
+    pointer-events: none;
+}
+
+.future-me-section::after {
+    content: "";
+
+    position: absolute;
+    width: 450px;
+    height: 450px;
+
+    right: -240px;
+    bottom: -240px;
+
+    border-radius: 50%;
+
+    background: rgba(190, 126, 143, 0.12);
+
+    filter: blur(15px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.future-me-container {
+    position: relative;
+    z-index: 2;
+
+    width: min(930px, 100%);
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.future-me-intro {
+    text-align: center;
+
+    max-width: 760px;
+
+    margin: 0 auto 52px;
+}
+
+.future-me-kicker {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+
+    margin-bottom: 18px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+
+    color: #a06270;
+}
+
+.future-me-kicker::before,
+.future-me-kicker::after {
+    content: "";
+
+    width: 34px;
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(160, 98, 112, 0.55)
+    );
+}
+
+.future-me-kicker::after {
+    transform: rotate(180deg);
+}
+
+
+.future-me-title {
+    margin: 0;
+
+    font-family: "Playfair Display", Georgia, serif;
+
+    font-size: clamp(44px, 6vw, 72px);
+    line-height: 1.05;
+
+    font-weight: 600;
+
+    letter-spacing: -0.035em;
+
+    color: #613744;
+
+    text-shadow:
+        0 2px 0 rgba(255,255,255,0.8),
+        0 12px 35px rgba(96, 51, 64, 0.08);
+}
+
+
+.future-me-subtitle {
+    margin: 18px auto 0;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+    line-height: 1.8;
+
+    color: #9a737b;
+}
+
+
+/* =========================================================
+   MAIN LETTER
+   ========================================================= */
+
+.future-me-letter {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: clamp(42px, 6vw, 78px);
+
+    border-radius: 38px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 253, 250, 0.97),
+            rgba(255, 247, 242, 0.96)
+        );
+
+    border: 1px solid rgba(145, 83, 98, 0.14);
+
+    box-shadow:
+        0 35px 90px rgba(91, 48, 61, 0.12),
+        0 12px 35px rgba(91, 48, 61, 0.06),
+        inset 0 1px 0 rgba(255,255,255,0.95);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+
+/* =========================================================
+   INNER FRAME
+   ========================================================= */
+
+.future-me-letter::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 13px;
+
+    border: 1px solid rgba(154, 91, 105, 0.09);
+
+    border-radius: 28px;
+
+    pointer-events: none;
+}
+
+
+/* soft light inside */
+
+.future-me-letter::after {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    top: -190px;
+    right: -130px;
+
+    border-radius: 50%;
+
+    background: rgba(221, 163, 171, 0.12);
+
+    filter: blur(15px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   LETTER TOP
+   ========================================================= */
+
+.future-me-letter-top {
+    position: relative;
+    z-index: 3;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding-bottom: 21px;
+
+    margin-bottom: 48px;
+
+    border-bottom: 1px solid rgba(145, 83, 98, 0.12);
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 8px;
+    font-weight: 600;
+
+    letter-spacing: 0.22em;
+
+    color: #aa7881;
+}
+
+
+/* =========================================================
+   LETTER BODY
+   ========================================================= */
+
+.future-me-letter-body {
+    position: relative;
+    z-index: 3;
+
+    max-width: 760px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   FIRST GREETING
+   ========================================================= */
+
+.future-me-greeting {
+    position: relative;
+
+    margin: 0 0 37px !important;
+
+    font-family: "Playfair Display", Georgia, serif !important;
+
+    font-size: clamp(30px, 4vw, 39px) !important;
+
+    line-height: 1.2 !important;
+
+    font-style: italic;
+
+    color: #633845 !important;
+}
+
+
+/* =========================================================
+   NORMAL LETTER TEXT
+   ========================================================= */
+
+.future-me-letter-body > p:not(
+    .future-me-greeting
+):not(
+    .future-me-emphasis
+):not(
+    .future-me-final-emphasis
+):not(
+    .future-me-last-line
+):not(
+    .future-me-promise
+) {
+    position: relative;
+
+    margin: 0 0 27px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 15px;
+
+    line-height: 2.08;
+
+    letter-spacing: 0.005em;
+
+    color: #705b61;
+}
+
+
+/* =========================================================
+   SUBTLE FIRST LETTER
+   ========================================================= */
+
+.future-me-letter-body > p:nth-of-type(2)::first-letter {
+    font-family: "Playfair Display", Georgia, serif;
+
+    font-size: 48px;
+    line-height: 0.8;
+
+    float: left;
+
+    padding-right: 7px;
+    padding-top: 5px;
+
+    color: #9d6170;
+}
+
+
+/* =========================================================
+   IMPORTANT EMOTIONAL LINES
+   ========================================================= */
+
+.future-me-emphasis {
+    position: relative;
+
+    margin: 40px 0 !important;
+
+    padding: 22px 28px;
+
+    border-radius: 0 25px 25px 0;
+
+    border-left: 3px solid rgba(157, 91, 106, 0.55);
+
+    background:
+        linear-gradient(
+            100deg,
+            rgba(243, 220, 219, 0.65),
+            rgba(255, 247, 243, 0.35)
+        );
+
+    box-shadow:
+        0 10px 28px rgba(105, 59, 71, 0.045);
+
+    font-family: "Playfair Display", Georgia, serif !important;
+
+    font-size: clamp(21px, 3vw, 27px) !important;
+
+    line-height: 1.55 !important;
+
+    font-style: italic;
+
+    font-weight: 500;
+
+    color: #754351 !important;
+}
+
+
+.future-me-emphasis::before {
+    content: "“";
+
+    position: absolute;
+
+    left: 10px;
+    top: -13px;
+
+    font-family: Georgia, serif;
+
+    font-size: 55px;
+
+    color: rgba(157, 91, 106, 0.16);
+}
+
+
+/* =========================================================
+   FINAL EMOTIONAL PARAGRAPH
+   ========================================================= */
+
+.future-me-final-emphasis {
+    position: relative;
+
+    margin: 48px 0 !important;
+
+    padding: 32px 35px;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(241, 216, 215, 0.75),
+            rgba(255, 247, 243, 0.85)
+        );
+
+    border: 1px solid rgba(154, 91, 105, 0.10);
+
+    box-shadow:
+        0 15px 40px rgba(99, 54, 66, 0.07);
+
+    text-align: center;
+
+    font-family: "Playfair Display", Georgia, serif !important;
+
+    font-size: clamp(21px, 3vw, 28px) !important;
+
+    line-height: 1.7 !important;
+
+    font-style: italic;
+
+    color: #6d3d4b !important;
+}
+
+.future-me-final-emphasis::before {
+    content: "♡";
+
+    display: block;
+
+    margin-bottom: 9px;
+
+    font-family: Georgia, serif;
+
+    font-size: 22px;
+
+    color: rgba(157, 91, 106, 0.45);
+}
+
+
+/* =========================================================
+   PROMISE
+   ========================================================= */
+
+.future-me-promise {
+    position: relative;
+
+    margin: 28px 0 !important;
+
+    padding-left: 25px;
+
+    font-family: "Playfair Display", Georgia, serif !important;
+
+    font-size: 20px !important;
+
+    line-height: 1.8 !important;
+
+    font-style: italic;
+
+    color: #754452 !important;
+}
+
+.future-me-promise::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+
+    width: 2px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(157,91,106,.55),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   DIVIDERS
+   ========================================================= */
+
+.future-me-divider {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    height: 35px;
+
+    margin: 48px 0;
+
+    font-family: "Playfair Display", Georgia, serif;
+
+    font-size: 17px;
+
+    color: #a46776;
+}
+
+.future-me-divider::before,
+.future-me-divider::after {
+    content: "";
+
+    width: 100px;
+    height: 1px;
+
+    margin: 0 16px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(157,91,106,.25)
+        );
+}
+
+.future-me-divider::after {
+    transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   LARGE EMPTY SPACE
+   ========================================================= */
+
+.future-me-space {
+    height: 35px;
+}
+
+
+/* =========================================================
+   FINAL DIVIDER
+   ========================================================= */
+
+.future-me-final-divider {
+    margin: 52px auto 42px;
+
+    width: min(360px, 80%);
+
+    height: 1px;
+
+    overflow: hidden;
+
+    font-size: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(154,91,105,.30),
+            transparent
+        );
+}
+
+.future-me-final-divider::after {
+    content: "✦";
+
+    display: block;
+
+    position: relative;
+
+    top: -9px;
+
+    width: 22px;
+
+    margin: 0 auto;
+
+    text-align: center;
+
+    background: #fff8f4;
+
+    font-size: 13px;
+
+    color: #a46676;
+}
+
+
+/* =========================================================
+   LAST LINE
+   ========================================================= */
+
+.future-me-last-line {
+    margin: 0 0 23px !important;
+
+    text-align: center;
+
+    font-family: "Playfair Display", Georgia, serif !important;
+
+    font-size: 25px !important;
+
+    font-style: italic;
+
+    color: #744150 !important;
+}
+
+
+/* =========================================================
+   SIGNATURE
+   ========================================================= */
+
+.future-me-signature {
+    position: relative;
+
+    margin-top: 58px;
+
+    padding-top: 34px;
+
+    text-align: right;
+
+    border-top: 1px solid rgba(145,83,98,.13);
+}
+
+.future-me-signature p {
+    margin: 0 0 9px !important;
+
+    font-family: "Playfair Display", Georgia, serif !important;
+
+    font-size: 17px !important;
+
+    line-height: 1.7 !important;
+
+    font-style: italic;
+
+    color: #89656d !important;
+}
+
+.future-me-signature strong {
+    display: block;
+
+    font-family: "Playfair Display", Georgia, serif;
+
+    font-size: 34px;
+
+    font-weight: 600;
+
+    color: #623744;
+}
+
+.future-me-signature span {
+    display: block;
+
+    margin-top: 4px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: .08em;
+
+    color: #a17b83;
+}
+
+
+/* =========================================================
+   LETTER BOTTOM
+   ========================================================= */
+
+.future-me-letter-bottom {
+    position: relative;
+
+    z-index: 3;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 50px;
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(145,83,98,.10);
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 8px;
+
+    letter-spacing: .10em;
+
+    color: #aa7d85;
+}
+
+.future-me-letter-bottom span:last-child {
+    font-family: Georgia, serif;
+
+    font-size: 18px;
+
+    color: #a46172;
+}
+
+
+/* =========================================================
+   CLOSING QUOTE OUTSIDE LETTER
+   ========================================================= */
+
+.future-me-closing {
+    max-width: 700px;
+
+    margin: 65px auto 0;
+
+    text-align: center;
+}
+
+.future-me-closing-mark {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-family: Georgia, serif;
+
+    font-size: 58px;
+    line-height: .7;
+
+    color: rgba(154,91,105,.25);
+}
+
+.future-me-closing p {
+    margin: 0;
+
+    font-family: "Playfair Display", Georgia, serif;
+
+    font-size: clamp(20px, 3vw, 27px);
+
+    line-height: 1.7;
+
+    font-style: italic;
+
+    color: #744451;
+}
+
+.future-me-closing-author {
+    display: block;
+
+    margin-top: 17px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: .24em;
+
+    text-transform: uppercase;
+
+    color: #a1747d;
+}
+
+
+/* =========================================================
+   REVEAL FIX
+   ========================================================= */
+
+.future-me-section .reveal,
+.future-me-section .reveal.visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+}
+
+
+/* =========================================================
+   DESKTOP MICRO INTERACTION
+   ========================================================= */
+
+@media (min-width: 900px) {
+
+    .future-me-letter {
+        transition:
+            transform .5s ease,
+            box-shadow .5s ease;
+    }
+
+    .future-me-letter:hover {
+        transform: translateY(-4px);
+
+        box-shadow:
+            0 42px 100px rgba(91,48,61,.14),
+            0 14px 40px rgba(91,48,61,.07),
+            inset 0 1px 0 rgba(255,255,255,.98);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .future-me-section {
+        padding: 100px 18px 110px;
+    }
+
+    .future-me-intro {
+        margin-bottom: 38px;
+    }
+
+    .future-me-letter {
+        padding: 45px 28px;
+
+        border-radius: 30px;
+    }
+
+    .future-me-letter::before {
+        inset: 10px;
+
+        border-radius: 23px;
+    }
+
+    .future-me-letter-top {
+        margin-bottom: 38px;
+    }
+
+    .future-me-letter-body > p:not(
+        .future-me-greeting
+    ):not(
+        .future-me-emphasis
+    ):not(
+        .future-me-final-emphasis
+    ):not(
+        .future-me-last-line
+    ):not(
+        .future-me-promise
+    ) {
+        font-size: 14px;
+
+        line-height: 1.95;
+    }
+
+    .future-me-emphasis {
+        padding: 20px 23px;
+
+        border-radius: 0 21px 21px 0;
+    }
+
+    .future-me-final-emphasis {
+        padding: 27px 23px;
+    }
+
+    .future-me-signature {
+        text-align: center;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+    .future-me-section {
+        padding: 80px 13px 90px;
+    }
+
+    .future-me-kicker {
+        font-size: 8px;
+
+        letter-spacing: .17em;
+
+        gap: 7px;
+    }
+
+    .future-me-kicker::before,
+    .future-me-kicker::after {
+        width: 21px;
+    }
+
+    .future-me-title {
+        font-size: 39px;
+    }
+
+    .future-me-subtitle {
+        font-size: 11px;
+    }
+
+    .future-me-letter {
+        padding: 37px 20px;
+
+        border-radius: 25px;
+    }
+
+    .future-me-letter::before {
+        inset: 8px;
+
+        border-radius: 19px;
+    }
+
+    .future-me-letter-top {
+        margin-bottom: 31px;
+
+        padding-bottom: 16px;
+
+        font-size: 6.5px;
+
+        letter-spacing: .14em;
+    }
+
+    .future-me-greeting {
+        font-size: 29px !important;
+
+        margin-bottom: 28px !important;
+    }
+
+    .future-me-letter-body > p:not(
+        .future-me-greeting
+    ):not(
+        .future-me-emphasis
+    ):not(
+        .future-me-final-emphasis
+    ):not(
+        .future-me-last-line
+    ):not(
+        .future-me-promise
+    ) {
+        font-size: 13.5px;
+
+        line-height: 1.9;
+
+        margin-bottom: 22px;
+    }
+
+    .future-me-emphasis {
+        margin: 33px 0 !important;
+
+        padding: 18px 17px;
+
+        font-size: 19px !important;
+
+        line-height: 1.6 !important;
+    }
+
+    .future-me-final-emphasis {
+        margin: 38px 0 !important;
+
+        padding: 23px 17px;
+
+        border-radius: 22px;
+
+        font-size: 19px !important;
+
+        line-height: 1.65 !important;
+    }
+
+    .future-me-promise {
+        font-size: 17px !important;
+
+        line-height: 1.75 !important;
+
+        padding-left: 19px;
+    }
+
+    .future-me-divider {
+        margin: 36px 0;
+    }
+
+    .future-me-divider::before,
+    .future-me-divider::after {
+        width: 55px;
+
+        margin: 0 9px;
+    }
+
+    .future-me-space {
+        height: 20px;
+    }
+
+    .future-me-last-line {
+        font-size: 21px !important;
+    }
+
+    .future-me-signature {
+        margin-top: 43px;
+
+        padding-top: 28px;
+    }
+
+    .future-me-signature p {
+        font-size: 15px !important;
+    }
+
+    .future-me-signature strong {
+        font-size: 28px;
+    }
+
+    .future-me-signature span {
+        font-size: 8px;
+    }
+
+    .future-me-letter-bottom {
+        margin-top: 35px;
+
+        font-size: 6.5px;
+    }
+
+    .future-me-letter-bottom span:last-child {
+        font-size: 15px;
+    }
+
+    .future-me-closing {
+        margin-top: 48px;
+    }
+
+    .future-me-closing p {
+        font-size: 19px;
+
+        line-height: 1.65;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .future-me-section {
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+
+    .future-me-letter {
+        padding: 33px 16px;
+
+        border-radius: 22px;
+    }
+
+    .future-me-title {
+        font-size: 34px;
+    }
+
+    .future-me-letter-body > p:not(
+        .future-me-greeting
+    ):not(
+        .future-me-emphasis
+    ):not(
+        .future-me-final-emphasis
+    ):not(
+        .future-me-last-line
+    ):not(
+        .future-me-promise
+    ) {
+        font-size: 12.8px;
+    }
+
+    .future-me-emphasis {
+        font-size: 18px !important;
+
+        padding: 17px 14px;
+    }
+
+    .future-me-final-emphasis {
+        font-size: 18px !important;
+
+        padding: 21px 14px;
+    }
+
+    .future-me-letter-bottom span:first-child {
+        max-width: 210px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .future-me-letter {
+        transition: none !important;
+    }
+
+    .future-me-letter:hover {
+        transform: none !important;
+    }
+}
