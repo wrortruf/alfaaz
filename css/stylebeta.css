@@ -14105,5 +14105,48 @@ img {
 }
 
 /* =========================================================
+   FIRST GLANCE — NON CLICKABLE
+   ========================================================= */
+
+.book-frame,
+.book-frame img,
+.book-frame .image-placeholder {
+    cursor: default !important;
+}
+
+.book-frame img {
+    pointer-events: none !important;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* =========================================
+   BOOK COVER — NON CLICKABLE
+   ========================================= */
+
+/* Main book cover ko completely non-interactive */
+.book-cover,
+.book-cover img,
+.book-cover-image {
+    cursor: default !important;
+    pointer-events: none !important;
+    user-select: none !important;
+    -webkit-user-drag: none !important;
+}
+
+/* Agar book cover par fallback accidentally aaye,
+   usse show mat karo */
+.book-cover .image-fallback,
+.book-cover .image-fallback-icon {
+    display: none !important;
+}
+
+/* Book cover ke andar kisi hidden link/button ko bhi disable */
+.book-cover a,
+.book-cover button {
+    pointer-events: none !important;
+}
+
+/* =========================================================
    END — ENHANCED STYLE SHEET
    ========================================================= */
