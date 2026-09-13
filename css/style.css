@@ -11665,3 +11665,26 @@ img:not(.image-error) + .image-fallback {
     }
 
 }
+
+@media (max-width: 768px) {
+
+    .my-writings-page {
+        overflow-x: hidden;
+    }
+
+    .my-writings-page section {
+        position: relative;
+        height: auto !important;
+        min-height: auto !important;
+        overflow: hidden;
+    }
+
+    .my-writings-page .writing-intro {
+        padding-bottom: 100px;
+    }
+
+    .my-writings-page .author-writing-intro {
+        margin-bottom: 70px;
+    }
+
+}
