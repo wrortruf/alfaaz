@@ -11351,3 +11351,317 @@ img:not(.image-error) + .image-fallback {
         transform: none;
     }
 }
+
+/* =========================================================
+   SHAYARI AUTO NUMBERING
+   ========================================================= */
+
+/*
+   Parent counter ko 0 se start karta hai.
+   Har .shayari-piece apna number automatically increase karega.
+*/
+
+.shayari-collection {
+    counter-reset: shayari-counter;
+}
+
+
+/*
+   Har Shayari ko automatically +1 number milega.
+*/
+
+.shayari-collection .shayari-piece {
+    counter-increment: shayari-counter;
+}
+
+
+/*
+   Existing .shayari-number ke andar
+   automatically 01, 02, 03... generate hoga.
+*/
+
+.shayari-collection .shayari-number::before {
+    content: counter(shayari-counter, decimal-leading-zero);
+}
+
+
+/*
+   Important:
+   HTML ke andar accidentally koi number aa bhi jaye
+   toh pseudo-element ka generated number hi visible rahe.
+*/
+
+.shayari-collection .shayari-number {
+    font-variant-numeric: tabular-nums;
+}
+
+
+/* =========================================================
+   OPTIONAL — NUMBER ALIGNMENT
+   ========================================================= */
+
+.shayari-collection .shayari-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .shayari-collection .shayari-number {
+        font-variant-numeric: tabular-nums;
+    }
+
+}
+
+/* =========================================================
+   SHAYARI COLLECTION
+   Automatic numbering + titles
+   ========================================================= */
+
+.shayari-collection {
+    counter-reset: shayari-counter;
+}
+
+
+/* =========================================================
+   INDIVIDUAL SHAYARI
+   ========================================================= */
+
+.shayari-collection .shayari-piece {
+    counter-increment: shayari-counter;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/* =========================================================
+   AUTOMATIC NUMBER
+   ========================================================= */
+
+.shayari-collection .shayari-number {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-variant-numeric: tabular-nums;
+
+    /*
+       IMPORTANT:
+       Number HTML mein nahi hai.
+       CSS automatically generate karega.
+    */
+}
+
+
+.shayari-collection .shayari-number::before {
+    content: counter(
+        shayari-counter,
+        decimal-leading-zero
+    );
+}
+
+
+/* =========================================================
+   SHAYARI TITLE
+   ========================================================= */
+
+.shayari-collection .shayari-title {
+    margin: 12px 0 18px;
+
+    font-family: "Playfair Display", Georgia, serif;
+
+    font-size: clamp(
+        1.25rem,
+        2vw,
+        1.7rem
+    );
+
+    font-weight: 600;
+
+    line-height: 1.25;
+
+    letter-spacing: -0.01em;
+
+    color: inherit;
+}
+
+
+/* =========================================================
+   SHAYARI TEXT
+   ========================================================= */
+
+.shayari-collection .shayari-piece p {
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   AUTHOR
+   ========================================================= */
+
+.shayari-collection .shayari-author {
+    display: block;
+
+    margin-top: 22px;
+
+    font-family: "Playfair Display", Georgia, serif;
+
+    font-style: italic;
+}
+
+
+/* =========================================================
+   FEATURED SHAYARI
+   ========================================================= */
+
+.shayari-collection .shayari-featured .shayari-title {
+    font-size: clamp(
+        1.35rem,
+        2.2vw,
+        1.85rem
+    );
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+@media (hover: hover) {
+
+    .shayari-collection .shayari-piece:hover {
+        transform: translateY(-4px);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .shayari-collection .shayari-title {
+        font-size: 1.3rem;
+
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+
+    .shayari-collection .shayari-piece p {
+        line-height: 1.8;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .shayari-collection .shayari-title {
+        font-size: 1.2rem;
+    }
+
+    .shayari-collection .shayari-piece p {
+        font-size: 0.95rem;
+    }
+
+}
+
+/* =========================================================
+   LONG / FEATURED SHAYARI — CENTERED HEADING
+   ========================================================= */
+
+.shayari-collection .shayari-featured {
+    text-align: center;
+}
+
+.shayari-collection .shayari-featured .shayari-title {
+    text-align: center;
+
+    margin: 18px auto 24px;
+
+    max-width: 700px;
+
+    font-family: "Playfair Display", Georgia, serif;
+
+    font-size: clamp(
+        1.4rem,
+        2.4vw,
+        2rem
+    );
+
+    line-height: 1.3;
+
+    font-weight: 600;
+
+    letter-spacing: 0.01em;
+}
+
+
+/* Number bhi center mein */
+
+.shayari-collection .shayari-featured .shayari-number {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Long Shayari ka text center */
+
+.shayari-collection .shayari-featured p {
+    text-align: center;
+
+    max-width: 750px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    line-height: 2;
+}
+
+
+/* Author center */
+
+.shayari-collection .shayari-featured .shayari-author {
+    text-align: center;
+
+    margin-top: 25px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .shayari-collection .shayari-featured .shayari-title {
+        font-size: 1.35rem;
+
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
+
+    .shayari-collection .shayari-featured p {
+        line-height: 1.85;
+    }
+
+}
