@@ -7830,3 +7830,3524 @@ img:not(.image-error) + .image-fallback {
         width: 100%;
     }
 }
+
+/* =========================================================
+   MY WRITINGS MODAL
+   ========================================================= */
+
+.writings-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+}
+
+
+/* ---------- OPEN STATE ---------- */
+
+.writings-modal.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+/* ---------- OVERLAY ---------- */
+
+.writings-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(57, 37, 40, 0.58);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+
+/* =========================================================
+   MODAL CONTAINER
+   ========================================================= */
+
+.writings-modal-box {
+    position: relative;
+    z-index: 2;
+
+    width: min(900px, 100%);
+    max-height: 88vh;
+
+    overflow-y: auto;
+
+    padding: 55px 50px 42px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 250, 247, 0.98),
+            rgba(249, 232, 226, 0.98)
+        );
+
+    border: 1px solid rgba(151, 92, 101, 0.22);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 35px 90px rgba(53, 32, 36, 0.30),
+        0 12px 35px rgba(86, 51, 57, 0.14);
+
+    transform:
+        translateY(35px)
+        scale(0.96);
+
+    transition:
+        transform 0.45s
+        cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* ---------- MODAL OPEN ANIMATION ---------- */
+
+.writings-modal.active
+.writings-modal-box {
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+   ========================================================= */
+
+.writings-close {
+    position: absolute;
+
+    top: 17px;
+    right: 18px;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 1px solid rgba(145, 86, 95, 0.20);
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.65);
+
+    color: #70454c;
+
+    font-family: Arial, sans-serif;
+    font-size: 27px;
+    font-weight: 300;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.writings-close:hover {
+    background: #8d5961;
+    color: #ffffff;
+
+    transform: rotate(90deg);
+
+    box-shadow:
+        0 8px 20px rgba(120, 70, 78, 0.25);
+}
+
+
+.writings-close:active {
+    transform:
+        rotate(90deg)
+        scale(0.9);
+}
+
+
+/* =========================================================
+   WRITINGS HEADER
+   ========================================================= */
+
+.writings-header {
+    max-width: 680px;
+
+    margin:
+        0 auto 38px;
+
+    text-align: center;
+}
+
+
+.writings-header .section-kicker {
+    display: inline-block;
+
+    margin-bottom: 11px;
+
+    color: #9a6870;
+
+    font-size: 0.76rem;
+    font-weight: 600;
+
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+
+.writings-header h2 {
+    margin: 0 0 14px;
+
+    color: #4d3035;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(2.2rem, 5vw, 3.4rem);
+
+    font-weight: 600;
+
+    line-height: 1.15;
+}
+
+
+.writings-header h2 span {
+    color: #98616a;
+
+    font-style: italic;
+}
+
+
+.writings-header p {
+    max-width: 580px;
+
+    margin: 0 auto;
+
+    color: #765b5e;
+
+    font-family:
+        "Poppins",
+        sans-serif;
+
+    font-size: 0.93rem;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   WRITING CARDS
+   ========================================================= */
+
+.writing-card {
+    position: relative;
+
+    margin-bottom: 21px;
+
+    padding: 28px 30px 25px;
+
+    background:
+        rgba(255, 253, 250, 0.78);
+
+    border:
+        1px solid
+        rgba(150, 93, 99, 0.16);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(88, 52, 58, 0.06);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.writing-card:hover {
+    transform: translateY(-4px);
+
+    border-color:
+        rgba(150, 93, 99, 0.30);
+
+    box-shadow:
+        0 15px 35px
+        rgba(88, 52, 58, 0.11);
+}
+
+
+/* ---------- DECORATIVE SIDE ---------- */
+
+.writing-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 23px;
+
+    width: 3px;
+    height: 48px;
+
+    border-radius:
+        0 5px 5px 0;
+
+    background: #b77c84;
+
+    opacity: 0.65;
+}
+
+
+/* =========================================================
+   WRITING TYPE
+   ========================================================= */
+
+.writing-type {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: 9px;
+
+    padding:
+        5px 11px;
+
+    border-radius: 50px;
+
+    background:
+        rgba(166, 108, 116, 0.10);
+
+    color: #96616a;
+
+    font-size: 0.70rem;
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   WRITING TITLE
+   ========================================================= */
+
+.writing-card h3 {
+    margin:
+        3px 0 13px;
+
+    color: #53353a;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: 1.55rem;
+
+    font-weight: 600;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   WRITING TEXT
+   ========================================================= */
+
+.writing-card p {
+    margin: 0;
+
+    color: #654d51;
+
+    font-family:
+        "Poppins",
+        sans-serif;
+
+    font-size: 0.93rem;
+
+    line-height: 2;
+}
+
+
+/* =========================================================
+   WRITING SIGNATURE
+   ========================================================= */
+
+.writing-signature {
+    display: block;
+
+    margin-top: 17px;
+
+    color: #9a6870;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: 0.92rem;
+
+    font-style: italic;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   MODAL FOOTER
+   ========================================================= */
+
+.writings-footer {
+    padding-top: 13px;
+
+    text-align: center;
+}
+
+
+.writings-footer span {
+    color: #9b7478;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: 0.92rem;
+
+    font-style: italic;
+}
+
+
+/* =========================================================
+   MODAL SCROLLBAR
+   ========================================================= */
+
+.writings-modal-box::-webkit-scrollbar {
+    width: 7px;
+}
+
+
+.writings-modal-box::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+.writings-modal-box::-webkit-scrollbar-thumb {
+    background:
+        rgba(151, 93, 101, 0.35);
+
+    border-radius: 20px;
+}
+
+
+.writings-modal-box::-webkit-scrollbar-thumb:hover {
+    background:
+        rgba(151, 93, 101, 0.55);
+}
+
+
+/* =========================================================
+   ABOUT AUTHOR BUTTON
+   ========================================================= */
+
+.author-actions {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 28px;
+}
+
+
+.author-actions .button {
+    min-width: 175px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   THOUGHTS / QUOTE SLIDER
+   ========================================================= */
+
+.quote-container {
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* ---------- ARROW BUTTON ---------- */
+
+.quote-arrow {
+    position: absolute;
+
+    top: 50%;
+
+    z-index: 5;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border:
+        1px solid
+        rgba(145, 86, 95, 0.22);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 249, 246, 0.80);
+
+    color: #805159;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 30px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    opacity: 0.85;
+
+    transform:
+        translateY(-50%);
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease,
+        opacity 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.quote-arrow:hover {
+    background: #98616a;
+
+    color: #ffffff;
+
+    opacity: 1;
+
+    transform:
+        translateY(-50%)
+        scale(1.08);
+
+    box-shadow:
+        0 8px 22px
+        rgba(117, 69, 77, 0.20);
+}
+
+
+.quote-arrow:active {
+    transform:
+        translateY(-50%)
+        scale(0.94);
+}
+
+
+/* ---------- LEFT ---------- */
+
+.quote-prev {
+    left: 10px;
+}
+
+
+/* ---------- RIGHT ---------- */
+
+.quote-next {
+    right: 10px;
+}
+
+
+/* =========================================================
+   QUOTE SLIDE ANIMATION
+   ========================================================= */
+
+.quote-text,
+.quote-author {
+    transition:
+        opacity 0.18s ease,
+        transform 0.18s ease;
+}
+
+
+.thought-slide-next {
+    opacity: 0;
+
+    transform:
+        translateX(-25px);
+}
+
+
+.thought-slide-prev {
+    opacity: 0;
+
+    transform:
+        translateX(25px);
+}
+
+
+/* =========================================================
+   QUOTE DOTS
+   ========================================================= */
+
+.quote-dots {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 22px;
+}
+
+
+.quote-dot {
+    width: 8px;
+    height: 8px;
+
+    padding: 0;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background:
+        rgba(139, 82, 91, 0.25);
+
+    cursor: pointer;
+
+    transition:
+        width 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.quote-dot:hover {
+    transform: scale(1.2);
+}
+
+
+.quote-dot.active {
+    width: 24px;
+
+    border-radius: 20px;
+
+    background: #95606a;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .writings-modal {
+        padding: 18px;
+    }
+
+
+    .writings-modal-box {
+        max-height: 90vh;
+
+        padding:
+            50px 30px 35px;
+
+        border-radius: 24px;
+    }
+
+
+    .writing-card {
+        padding:
+            25px 24px 23px;
+    }
+
+
+    .quote-arrow {
+        width: 38px;
+        height: 38px;
+
+        font-size: 27px;
+    }
+
+
+    .quote-prev {
+        left: 6px;
+    }
+
+
+    .quote-next {
+        right: 6px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .writings-modal {
+        padding: 8px;
+    }
+
+
+    .writings-modal-box {
+        width: 100%;
+
+        max-height: 94vh;
+
+        padding:
+            48px 18px 30px;
+
+        border-radius: 20px;
+    }
+
+
+    .writings-close {
+        top: 12px;
+        right: 12px;
+
+        width: 38px;
+        height: 38px;
+
+        font-size: 24px;
+    }
+
+
+    .writings-header {
+        margin-bottom: 25px;
+
+        padding:
+            0 7px;
+    }
+
+
+    .writings-header .section-kicker {
+        font-size: 0.66rem;
+
+        letter-spacing: 0.13em;
+    }
+
+
+    .writings-header h2 {
+        font-size: 2.1rem;
+    }
+
+
+    .writings-header p {
+        font-size: 0.84rem;
+
+        line-height: 1.7;
+    }
+
+
+    .writing-card {
+        margin-bottom: 16px;
+
+        padding:
+            22px 19px 21px;
+
+        border-radius: 17px;
+    }
+
+
+    .writing-card::before {
+        top: 20px;
+
+        height: 40px;
+    }
+
+
+    .writing-type {
+        font-size: 0.63rem;
+
+        padding:
+            4px 9px;
+    }
+
+
+    .writing-card h3 {
+        font-size: 1.35rem;
+
+        margin-bottom: 10px;
+    }
+
+
+    .writing-card p {
+        font-size: 0.84rem;
+
+        line-height: 1.85;
+    }
+
+
+    .writing-signature {
+        margin-top: 14px;
+
+        font-size: 0.84rem;
+    }
+
+
+    .writings-footer span {
+        font-size: 0.80rem;
+    }
+
+
+    .author-actions {
+        margin-top: 22px;
+    }
+
+
+    .author-actions .button {
+        width: 100%;
+
+        max-width: 250px;
+    }
+
+
+    /* -----------------------------------------
+       THOUGHT ARROWS — MOBILE
+       ----------------------------------------- */
+
+    .quote-arrow {
+        width: 34px;
+        height: 34px;
+
+        font-size: 24px;
+
+        background:
+            rgba(255, 249, 246, 0.90);
+    }
+
+
+    .quote-prev {
+        left: 3px;
+    }
+
+
+    .quote-next {
+        right: 3px;
+    }
+
+
+    /*
+       Give the quote some breathing room
+       so text doesn't touch arrows.
+    */
+
+    .quote-text {
+        padding-left: 34px;
+        padding-right: 34px;
+    }
+
+
+    .quote-author {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .writings-modal {
+        padding: 5px;
+    }
+
+
+    .writings-modal-box {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+
+    .writings-header h2 {
+        font-size: 1.9rem;
+    }
+
+
+    .writing-card {
+        padding:
+            20px 16px;
+    }
+
+
+    .quote-arrow {
+        width: 31px;
+        height: 31px;
+
+        font-size: 22px;
+    }
+
+
+    .quote-text {
+        padding-left: 29px;
+        padding-right: 29px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .writings-modal,
+    .writings-modal-box,
+    .writing-card,
+    .writings-close,
+    .quote-arrow,
+    .quote-text,
+    .quote-author {
+        transition: none !important;
+    }
+
+}
+
+/* =========================================================
+   38. AUTHOR — MY WRITINGS INTRO
+   Simple editorial text — NO CARD
+========================================================= */
+
+.author-writing-intro {
+    position: relative;
+
+    margin-top: 42px;
+    padding-top: 30px;
+
+    border-top:
+        1px solid
+        rgba(126, 74, 80, 0.16);
+}
+
+
+/* Small heading */
+
+.writing-intro-label {
+    display: block;
+
+    margin-bottom: 13px;
+
+    color: var(--rose-dark);
+
+    font-size: 10px;
+    font-weight: 600;
+
+    letter-spacing: 0.24em;
+
+    text-transform: uppercase;
+}
+
+
+/* Main writing text */
+
+.writing-intro-text {
+    max-width: 650px;
+
+    margin: 0 !important;
+
+    font-family: var(--serif) !important;
+
+    font-size: 21px !important;
+
+    line-height: 1.75 !important;
+
+    color: var(--cream-soft) !important;
+}
+
+
+/* Little decorative quote mark */
+
+.author-writing-intro::before {
+    content: "“";
+
+    position: absolute;
+
+    top: 12px;
+    right: 10px;
+
+    font-family: var(--display);
+
+    font-size: 100px;
+
+    line-height: 1;
+
+    color:
+        rgba(201, 142, 145, 0.10);
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   AUTHOR WRITING BUTTON
+========================================= */
+
+.author-writing-button {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 16px;
+
+    margin-top: 25px;
+
+    padding:
+        12px 4px;
+
+    border: none;
+
+    border-bottom:
+        1px solid
+        rgba(201, 142, 145, 0.55);
+
+    background: transparent;
+
+    color: var(--rose-light);
+
+    font-family: var(--body);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+
+    cursor: pointer;
+
+    transition:
+        color 0.3s ease,
+        border-color 0.3s ease,
+        gap 0.3s ease;
+}
+
+
+.author-writing-button:hover {
+    color: var(--cream);
+
+    border-color:
+        var(--cream);
+
+    gap: 23px;
+}
+
+
+.writing-button-arrow {
+    font-family: Arial, sans-serif;
+
+    font-size: 18px;
+
+    line-height: 1;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.author-writing-button:hover
+.writing-button-arrow {
+    transform: translateX(3px);
+}
+
+
+/* =========================================================
+   39. MY WRITINGS FULL SCREEN PAGE
+========================================================= */
+
+.my-writings-page {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f7e9e5 0%,
+            #f2ddda 48%,
+            #ead0cf 100%
+        );
+
+    color: var(--text);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        translateY(30px);
+
+    transition:
+        opacity 0.45s ease,
+        visibility 0.45s ease,
+        transform 0.55s
+        cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+.my-writings-page.is-open {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateY(0);
+}
+
+
+/* Decorative background */
+
+.my-writings-page::before {
+    content: "";
+
+    position: fixed;
+
+    width: 520px;
+    height: 520px;
+
+    top: -230px;
+    right: -160px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(201, 142, 145, 0.20),
+            transparent 68%
+        );
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+.my-writings-page::after {
+    content: "✿";
+
+    position: fixed;
+
+    left: -20px;
+    bottom: 30px;
+
+    font-size: 220px;
+
+    line-height: 1;
+
+    color:
+        rgba(126, 74, 80, 0.055);
+
+    transform: rotate(-18deg);
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+   WRITINGS HEADER
+========================================================= */
+
+.writings-page-header {
+    position: sticky;
+
+    top: 0;
+
+    z-index: 50;
+
+    width: 100%;
+
+    height: 78px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        0 5vw;
+
+    background:
+        rgba(247, 233, 230, 0.78);
+
+    border-bottom:
+        1px solid
+        rgba(105, 62, 68, 0.10);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+}
+
+
+/* Back button */
+
+.writings-back-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-height: 40px;
+
+    padding:
+        8px 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--brown);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.06em;
+
+    cursor: pointer;
+
+    transition:
+        color 0.25s ease,
+        gap 0.25s ease;
+}
+
+
+.writings-back-button:hover {
+    color: var(--rose-dark);
+
+    gap: 15px;
+}
+
+
+.back-arrow {
+    font-size: 20px;
+
+    font-family: Georgia, serif;
+
+    line-height: 1;
+}
+
+
+/* Mini brand */
+
+.writings-page-mini-brand {
+    font-family: var(--display);
+
+    font-size: 19px;
+
+    font-style: italic;
+
+    color: var(--brown-dark);
+}
+
+
+/* =========================================================
+   WRITINGS HERO
+========================================================= */
+
+.writings-hero {
+    position: relative;
+
+    min-height: calc(100vh - 78px);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        100px 25px 120px;
+
+    overflow: hidden;
+
+    text-align: center;
+}
+
+
+/* Large decorative flower */
+
+.writings-hero::before {
+    content: "❀";
+
+    position: absolute;
+
+    left: 4%;
+
+    top: 8%;
+
+    font-size: 150px;
+
+    color:
+        rgba(126, 74, 80, 0.065);
+
+    transform: rotate(-12deg);
+
+    pointer-events: none;
+}
+
+
+.writings-hero::after {
+    content: "✦";
+
+    position: absolute;
+
+    right: 8%;
+
+    bottom: 15%;
+
+    font-size: 95px;
+
+    color:
+        rgba(185, 150, 104, 0.16);
+
+    pointer-events: none;
+}
+
+
+.writings-hero-inner {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(
+        900px,
+        100%
+    );
+
+    margin: auto;
+}
+
+
+/* Hero small label */
+
+.writings-eyebrow {
+    display: inline-block;
+
+    margin-bottom: 20px;
+
+    color: var(--rose-dark);
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.32em;
+
+    text-transform: uppercase;
+}
+
+
+.writings-hero h1 {
+    font-family: var(--display);
+
+    font-size:
+        clamp(
+            65px,
+            11vw,
+            150px
+        );
+
+    line-height: 0.92;
+
+    font-weight: 500;
+
+    letter-spacing: -0.055em;
+
+    color: var(--brown-dark);
+
+    text-wrap: balance;
+}
+
+
+.writings-hero-line {
+    max-width: 620px;
+
+    margin:
+        35px auto 0;
+
+    font-family: var(--serif);
+
+    font-size:
+        clamp(
+            21px,
+            3vw,
+            29px
+        );
+
+    line-height: 1.55;
+
+    font-style: italic;
+
+    color: var(--rose-dark);
+}
+
+
+/* Scroll hint */
+
+.writings-scroll-hint {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 75px;
+
+    color: var(--text-muted);
+
+    font-size: 9px;
+
+    letter-spacing: 0.22em;
+
+    text-transform: uppercase;
+}
+
+
+.scroll-line {
+    position: relative;
+
+    width: 1px;
+
+    height: 48px;
+
+    overflow: hidden;
+
+    background:
+        rgba(126, 74, 80, 0.20);
+}
+
+
+.scroll-line::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: -100%;
+
+    width: 100%;
+
+    height: 55%;
+
+    background:
+        var(--rose-dark);
+
+    animation:
+        writingsScrollLine
+        1.8s ease-in-out
+        infinite;
+}
+
+
+@keyframes writingsScrollLine {
+
+    0% {
+        top: -60%;
+    }
+
+    50% {
+        top: 100%;
+    }
+
+    100% {
+        top: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   WRITINGS ABOUT SECTION
+========================================================= */
+
+.writings-about {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(
+        1100px,
+        calc(100% - 50px)
+    );
+
+    margin: auto;
+
+    padding:
+        125px 0;
+
+    display: grid;
+
+    grid-template-columns:
+        0.9fr
+        1.1fr;
+
+    gap: 90px;
+
+    border-top:
+        1px solid
+        rgba(105, 62, 68, 0.10);
+}
+
+
+/* Heading */
+
+.writings-section-heading {
+    position: relative;
+}
+
+
+.writings-section-heading.centered {
+    max-width: 800px;
+
+    margin:
+        0 auto 75px;
+
+    text-align: center;
+}
+
+
+.writings-section-number {
+    display: block;
+
+    margin-bottom: 14px;
+
+    font-family: var(--display);
+
+    font-size: 17px;
+
+    font-style: italic;
+
+    color: var(--rose-dark);
+}
+
+
+.writings-section-label {
+    display: inline-block;
+
+    margin-bottom: 17px;
+
+    color: var(--rose-dark);
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.23em;
+
+    text-transform: uppercase;
+}
+
+
+.writings-section-heading h2 {
+    max-width: 620px;
+
+    font-family: var(--display);
+
+    font-size:
+        clamp(
+            42px,
+            5vw,
+            68px
+        );
+
+    line-height: 1.03;
+
+    font-weight: 500;
+
+    letter-spacing: -0.035em;
+
+    color: var(--brown-dark);
+}
+
+
+.writings-section-heading.centered h2 {
+    max-width: 800px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.writings-section-heading.centered > p {
+    max-width: 650px;
+
+    margin:
+        20px auto 0;
+
+    font-family: var(--serif);
+
+    font-size: 20px;
+
+    line-height: 1.7;
+
+    color: var(--text-muted);
+}
+
+
+/* About text */
+
+.writings-about-content {
+    align-self: center;
+}
+
+
+.writings-about-content p {
+    margin-bottom: 22px;
+
+    font-family: var(--serif);
+
+    font-size: 20px;
+
+    line-height: 1.85;
+
+    color: var(--text-soft);
+}
+
+
+.writings-about-content strong {
+    font-family: var(--display);
+
+    font-weight: 600;
+
+    color: var(--rose-dark);
+}
+
+
+.writings-signature {
+    margin-top: 32px;
+
+    font-family: var(--display);
+
+    font-size: 20px;
+
+    font-style: italic;
+
+    color: var(--rose-dark);
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.writings-divider {
+    position: relative;
+
+    width: min(
+        1100px,
+        calc(100% - 50px)
+    );
+
+    height: 1px;
+
+    margin: auto;
+
+    background:
+        rgba(105, 62, 68, 0.12);
+
+    text-align: center;
+}
+
+
+.writings-divider span {
+    position: relative;
+
+    top: -16px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 32px;
+
+    height: 32px;
+
+    background:
+        #f2ddda;
+
+    color: var(--gold-dark);
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   CONTENT SECTIONS
+========================================================= */
+
+.writings-content-section {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(
+        1100px,
+        calc(100% - 50px)
+    );
+
+    margin: auto;
+
+    padding:
+        130px 0;
+}
+
+
+/* =========================================================
+   VOICEOVER LIST
+========================================================= */
+
+.voiceovers-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 70px;
+}
+
+
+.voiceover-item {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        70px
+        minmax(0, 1fr)
+        minmax(300px, 0.75fr);
+
+    gap: 35px;
+
+    align-items: center;
+
+    padding:
+        45px 0;
+
+    border-top:
+        1px solid
+        rgba(105, 62, 68, 0.12);
+
+    transition:
+        transform 0.35s ease;
+}
+
+
+.voiceover-item:last-child {
+    border-bottom:
+        1px solid
+        rgba(105, 62, 68, 0.12);
+}
+
+
+.voiceover-item:hover {
+    transform:
+        translateY(-4px);
+}
+
+
+/* Number */
+
+.voiceover-number {
+    align-self: start;
+
+    font-family: var(--display);
+
+    font-size: 18px;
+
+    font-style: italic;
+
+    color: var(--rose-dark);
+}
+
+
+/* Content */
+
+.voiceover-content {
+    padding-right: 15px;
+}
+
+
+.voiceover-category {
+    display: inline-block;
+
+    margin-bottom: 12px;
+
+    color: var(--rose-dark);
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.20em;
+
+    text-transform: uppercase;
+}
+
+
+.voiceover-content h3 {
+    font-family: var(--display);
+
+    font-size:
+        clamp(
+            29px,
+            4vw,
+            46px
+        );
+
+    line-height: 1.08;
+
+    font-weight: 500;
+
+    color: var(--brown-dark);
+}
+
+
+.voiceover-content p {
+    max-width: 560px;
+
+    margin-top: 17px;
+
+    font-family: var(--serif);
+
+    font-size: 18px;
+
+    line-height: 1.75;
+
+    color: var(--text-soft);
+}
+
+
+/* YouTube link */
+
+.voiceover-link {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+    padding-bottom: 5px;
+
+    border-bottom:
+        1px solid
+        rgba(126, 74, 80, 0.45);
+
+    color: var(--rose-dark);
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+
+    transition:
+        gap 0.3s ease,
+        color 0.3s ease;
+}
+
+
+.voiceover-link:hover {
+    gap: 15px;
+
+    color: var(--brown-dark);
+}
+
+
+.voiceover-link span {
+    font-size: 15px;
+}
+
+
+/* Voiceover image */
+
+.voiceover-visual {
+    position: relative;
+
+    aspect-ratio: 1.35;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #e4c5c3,
+            #f7e9e5
+        );
+
+    border:
+        1px solid
+        rgba(105, 62, 68, 0.10);
+
+    box-shadow:
+        0 20px 50px
+        rgba(70, 38, 43, 0.10);
+}
+
+
+.voiceover-visual img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.7s ease,
+        opacity 0.4s ease;
+}
+
+
+.voiceover-item:hover
+.voiceover-visual img {
+    transform:
+        scale(1.05);
+}
+
+
+/* Play button */
+
+.voiceover-play {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    transform:
+        translate(-50%, -50%);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.65);
+
+    border-radius: 50%;
+
+    background:
+        rgba(72, 42, 47, 0.70);
+
+    color: white;
+
+    font-size: 14px;
+
+    padding-left: 3px;
+
+    backdrop-filter: blur(8px);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.voiceover-visual:hover
+.voiceover-play {
+    transform:
+        translate(-50%, -50%)
+        scale(1.1);
+
+    background:
+        var(--rose-dark);
+}
+
+
+/* =========================================================
+   SHAYARI SECTION
+========================================================= */
+
+.shayari-section {
+    width: 100%;
+
+    max-width: none;
+
+    padding:
+        140px
+        max(25px, calc((100vw - 1100px) / 2));
+
+    background:
+        rgba(255, 247, 242, 0.46);
+
+    border-top:
+        1px solid
+        rgba(105, 62, 68, 0.07);
+
+    border-bottom:
+        1px solid
+        rgba(105, 62, 68, 0.07);
+}
+
+
+/* Shayari collection */
+
+.shayari-collection {
+    width: min(
+        1000px,
+        100%
+    );
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 22px;
+}
+
+
+/* Individual shayari */
+
+.shayari-piece {
+    position: relative;
+
+    min-height: 300px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding:
+        45px 42px;
+
+    background:
+        rgba(255, 252, 248, 0.72);
+
+    border:
+        1px solid
+        rgba(126, 74, 80, 0.11);
+
+    box-shadow:
+        0 12px 35px
+        rgba(70, 38, 43, 0.045);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+
+.shayari-piece:nth-child(even) {
+    transform:
+        translateY(28px);
+}
+
+
+.shayari-piece:hover {
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(126, 74, 80, 0.24);
+
+    box-shadow:
+        0 20px 45px
+        rgba(70, 38, 43, 0.09);
+}
+
+
+.shayari-piece:nth-child(even):hover {
+    transform:
+        translateY(20px);
+}
+
+
+/* Number */
+
+.shayari-number {
+    position: absolute;
+
+    top: 20px;
+    right: 25px;
+
+    font-size: 9px;
+
+    letter-spacing: 0.18em;
+
+    color: var(--rose-dark);
+}
+
+
+/* Shayari text */
+
+.shayari-piece p {
+    font-family: var(--display);
+
+    font-size:
+        clamp(
+            21px,
+            2.4vw,
+            29px
+        );
+
+    line-height: 1.65;
+
+    font-style: italic;
+
+    color: var(--brown-dark);
+}
+
+
+/* Author */
+
+.shayari-author {
+    display: block;
+
+    margin-top: 25px;
+
+    font-family: var(--serif);
+
+    font-size: 15px;
+
+    color: var(--rose-dark);
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   FEATURED WRITING
+========================================================= */
+
+.featured-writing-section {
+    position: relative;
+
+    min-height: 75vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        130px 25px;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #2c1a1e,
+            #180d10
+        );
+
+    color: var(--cream);
+}
+
+
+.featured-writing-section::before {
+    content: "“";
+
+    position: absolute;
+
+    left: 4%;
+    top: -100px;
+
+    font-family: var(--display);
+
+    font-size: 430px;
+
+    line-height: 1;
+
+    color:
+        rgba(201, 142, 145, 0.045);
+
+    pointer-events: none;
+}
+
+
+.featured-writing-section::after {
+    content: "✿";
+
+    position: absolute;
+
+    right: -30px;
+    bottom: -80px;
+
+    font-size: 250px;
+
+    color:
+        rgba(185, 150, 104, 0.035);
+
+    pointer-events: none;
+}
+
+
+.featured-writing-inner {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(
+        900px,
+        100%
+    );
+}
+
+
+.featured-writing-inner
+.writings-section-label {
+    color: var(--rose-light);
+}
+
+
+.featured-quote-mark {
+    margin-top: 20px;
+
+    font-family: var(--display);
+
+    font-size: 90px;
+
+    line-height: 0.7;
+
+    color: var(--gold-light);
+}
+
+
+.featured-writing-inner blockquote {
+    margin-top: 35px;
+
+    font-family: var(--display);
+
+    font-size:
+        clamp(
+            35px,
+            5vw,
+            65px
+        );
+
+    line-height: 1.25;
+
+    font-style: italic;
+
+    font-weight: 400;
+
+    color: var(--cream);
+}
+
+
+.featured-author {
+    margin-top: 30px;
+
+    font-family: var(--serif);
+
+    font-size: 17px;
+
+    color: var(--rose-light);
+}
+
+
+/* =========================================================
+   WHY I WRITE
+========================================================= */
+
+.writing-philosophy-section {
+    position: relative;
+
+    width: min(
+        1100px,
+        calc(100% - 50px)
+    );
+
+    margin: auto;
+
+    padding:
+        140px 0;
+
+    display: grid;
+
+    grid-template-columns:
+        0.9fr
+        1.1fr;
+
+    gap: 90px;
+}
+
+
+.philosophy-content {
+    align-self: center;
+}
+
+
+.philosophy-content p {
+    margin-bottom: 24px;
+
+    font-family: var(--serif);
+
+    font-size: 21px;
+
+    line-height: 1.85;
+
+    color: var(--text-soft);
+}
+
+
+.philosophy-content p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   FINAL WRITINGS SECTION
+========================================================= */
+
+.writings-final-section {
+    position: relative;
+
+    min-height: 80vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        130px 25px;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ead0ce,
+            #f6e7e2
+        );
+}
+
+
+.writings-final-section::before {
+    content: "❀";
+
+    position: absolute;
+
+    left: -35px;
+    top: 20px;
+
+    font-size: 240px;
+
+    color:
+        rgba(126, 74, 80, 0.055);
+
+    transform: rotate(-15deg);
+}
+
+
+.writings-final-section::after {
+    content: "✦";
+
+    position: absolute;
+
+    right: 8%;
+    bottom: 8%;
+
+    font-size: 100px;
+
+    color:
+        rgba(185, 150, 104, 0.15);
+}
+
+
+.writings-final-content {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(
+        800px,
+        100%
+    );
+}
+
+
+.writings-final-content
+.writings-eyebrow {
+    color: var(--rose-dark);
+}
+
+
+.writings-final-content h2 {
+    margin-top: 12px;
+
+    font-family: var(--display);
+
+    font-size:
+        clamp(
+            48px,
+            7vw,
+            90px
+        );
+
+    line-height: 1;
+
+    font-weight: 500;
+
+    letter-spacing: -0.04em;
+
+    color: var(--brown-dark);
+}
+
+
+.writings-final-content p {
+    max-width: 580px;
+
+    margin:
+        30px auto 0;
+
+    font-family: var(--serif);
+
+    font-size: 21px;
+
+    line-height: 1.7;
+
+    color: var(--text-soft);
+}
+
+
+.final-signature {
+    margin-top: 35px;
+
+    font-family: var(--display);
+
+    font-size: 21px;
+
+    font-style: italic;
+
+    color: var(--rose-dark);
+}
+
+
+/* =========================================================
+   WRITINGS BACK TO TOP
+========================================================= */
+
+.writings-top-button {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    z-index: 100;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(126, 74, 80, 0.25);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 248, 243, 0.88);
+
+    color: var(--rose-dark);
+
+    font-size: 19px;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        translateY(12px);
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 10px 30px
+        rgba(70, 38, 43, 0.10);
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease,
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.writings-top-button.visible {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0);
+}
+
+
+.writings-top-button:hover {
+    background:
+        var(--rose-dark);
+
+    color: white;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================================
+   WRITINGS PAGE SCROLLBAR
+========================================================= */
+
+.my-writings-page::-webkit-scrollbar {
+    width: 8px;
+}
+
+
+.my-writings-page::-webkit-scrollbar-track {
+    background:
+        rgba(126, 74, 80, 0.04);
+}
+
+
+.my-writings-page::-webkit-scrollbar-thumb {
+    background:
+        rgba(126, 74, 80, 0.35);
+
+    border-radius: 20px;
+}
+
+
+.my-writings-page::-webkit-scrollbar-thumb:hover {
+    background:
+        var(--rose-dark);
+}
+
+
+/* =========================================================
+   40. MOBILE
+========================================================= */
+
+@media (max-width: 850px) {
+
+    /* Author */
+
+    .author-writing-intro {
+        margin-top: 35px;
+
+        padding-top: 25px;
+    }
+
+    .writing-intro-text {
+        font-size: 18px !important;
+    }
+
+
+    /* Header */
+
+    .writings-page-header {
+        height: 68px;
+
+        padding:
+            0 20px;
+    }
+
+
+    .writings-page-mini-brand {
+        font-size: 16px;
+    }
+
+
+    /* Hero */
+
+    .writings-hero {
+        min-height:
+            calc(100vh - 68px);
+
+        padding:
+            80px 25px 90px;
+    }
+
+
+    .writings-hero::before {
+        left: -35px;
+
+        top: 5%;
+
+        font-size: 100px;
+    }
+
+
+    .writings-hero::after {
+        right: 4%;
+
+        bottom: 8%;
+
+        font-size: 60px;
+    }
+
+
+    .writings-hero h1 {
+        font-size:
+            clamp(
+                58px,
+                15vw,
+                100px
+            );
+    }
+
+
+    .writings-hero-line {
+        font-size: 21px;
+    }
+
+
+    .writings-scroll-hint {
+        margin-top: 55px;
+    }
+
+
+    /* About */
+
+    .writings-about {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+
+        padding:
+            95px 0;
+    }
+
+
+    .writings-section-heading h2 {
+        font-size:
+            clamp(
+                40px,
+                9vw,
+                60px
+            );
+    }
+
+
+    .writings-about-content p {
+        font-size: 19px;
+    }
+
+
+    /* General sections */
+
+    .writings-content-section {
+        padding:
+            100px 0;
+    }
+
+
+    /* Voiceovers */
+
+    .voiceover-item,
+    .voiceover-item.reverse {
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+
+        padding:
+            45px 0;
+    }
+
+
+    .voiceover-number {
+        margin-bottom: -8px;
+    }
+
+
+    .voiceover-content {
+        padding-right: 0;
+    }
+
+
+    .voiceover-visual {
+        width: min(
+            100%,
+            600px
+        );
+
+        margin: auto;
+    }
+
+
+    /* Shayari */
+
+    .shayari-section {
+        padding:
+            100px 25px;
+    }
+
+
+    .shayari-collection {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+
+    .shayari-piece,
+    .shayari-piece:nth-child(even) {
+        min-height: 270px;
+
+        padding:
+            40px 30px;
+
+        transform: none;
+    }
+
+
+    .shayari-piece:hover,
+    .shayari-piece:nth-child(even):hover {
+        transform:
+            translateY(-4px);
+    }
+
+
+    /* Philosophy */
+
+    .writing-philosophy-section {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+
+        padding:
+            100px 0;
+    }
+
+
+    /* Featured */
+
+    .featured-writing-section {
+        min-height: 65vh;
+
+        padding:
+            100px 25px;
+    }
+
+
+    .featured-writing-section::before {
+        font-size: 260px;
+    }
+
+
+    /* Final */
+
+    .writings-final-section {
+        min-height: 70vh;
+
+        padding:
+            100px 25px;
+    }
+
+
+    .writings-final-content h2 {
+        font-size:
+            clamp(
+                43px,
+                9vw,
+                70px
+            );
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 550px) {
+
+    .author-writing-intro::before {
+        right: -5px;
+
+        font-size: 75px;
+    }
+
+
+    .writing-intro-text {
+        font-size: 17px !important;
+
+        line-height: 1.75 !important;
+    }
+
+
+    .author-writing-button {
+        margin-top: 20px;
+    }
+
+
+    .writings-page-header {
+        padding:
+            0 16px;
+    }
+
+
+    .writings-back-button {
+        font-size: 10px;
+    }
+
+
+    .writings-page-mini-brand {
+        font-size: 14px;
+    }
+
+
+    .writings-hero {
+        padding:
+            70px 20px 80px;
+    }
+
+
+    .writings-hero h1 {
+        font-size:
+            clamp(
+                52px,
+                17vw,
+                80px
+            );
+    }
+
+
+    .writings-hero-line {
+        margin-top: 25px;
+
+        font-size: 19px;
+    }
+
+
+    .writings-eyebrow {
+        font-size: 8px;
+
+        letter-spacing: 0.24em;
+    }
+
+
+    .writings-section-label {
+        font-size: 8px;
+
+        letter-spacing: 0.18em;
+    }
+
+
+    .writings-section-heading.centered {
+        margin-bottom: 55px;
+    }
+
+
+    .writings-section-heading.centered > p {
+        font-size: 17px;
+    }
+
+
+    .voiceover-content h3 {
+        font-size: 31px;
+    }
+
+
+    .voiceover-content p {
+        font-size: 17px;
+    }
+
+
+    .voiceover-visual {
+        aspect-ratio: 1.15;
+    }
+
+
+    .voiceover-play {
+        width: 50px;
+        height: 50px;
+    }
+
+
+    .shayari-piece {
+        min-height: 250px;
+
+        padding:
+            38px 25px;
+    }
+
+
+    .shayari-piece p {
+        font-size: 21px;
+
+        line-height: 1.7;
+    }
+
+
+    .shayari-author {
+        font-size: 14px;
+    }
+
+
+    .featured-writing-inner blockquote {
+        font-size: 32px;
+    }
+
+
+    .featured-quote-mark {
+        font-size: 70px;
+    }
+
+
+    .philosophy-content p {
+        font-size: 18px;
+
+        line-height: 1.8;
+    }
+
+
+    .writings-final-content h2 {
+        font-size: 43px;
+
+        line-height: 1.05;
+    }
+
+
+    .writings-final-content p {
+        font-size: 18px;
+    }
+
+
+    .writings-top-button {
+        right: 17px;
+        bottom: 17px;
+
+        width: 43px;
+        height: 43px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .writings-page-mini-brand {
+        display: none;
+    }
+
+
+    .writings-page-header {
+        justify-content: flex-start;
+    }
+
+
+    .writings-hero h1 {
+        font-size: 51px;
+    }
+
+
+    .writings-hero-line {
+        font-size: 18px;
+    }
+
+
+    .writings-content-section,
+    .writings-about,
+    .writing-philosophy-section {
+        width:
+            calc(100% - 36px);
+    }
+
+
+    .shayari-section {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+
+    .shayari-piece {
+        padding:
+            35px 21px;
+    }
+
+
+    .shayari-piece p {
+        font-size: 19px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .my-writings-page,
+    .author-writing-button,
+    .voiceover-item,
+    .voiceover-visual img,
+    .voiceover-play,
+    .shayari-piece,
+    .writings-top-button {
+        transition: none !important;
+    }
+
+
+    .scroll-line::after {
+        animation: none !important;
+    }
+
+}
+
+/* =========================================================
+   SHAYARI — PREMIUM EDITORIAL GRID
+   ========================================================= */
+
+/* Main collection */
+
+.shayari-collection {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    /* Horizontal + vertical spacing separately */
+    column-gap: 30px;
+    row-gap: 46px;
+
+    align-items: stretch;
+
+    /* Prevent unexpected overflow */
+    width: 100%;
+}
+
+
+/* =========================================================
+   NORMAL SHAYARI CARD
+   ========================================================= */
+
+.shayari-piece {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    box-sizing: border-box;
+
+    /* Keeps text from touching edges */
+    padding: 38px 36px;
+
+    /* Smooth visual separation */
+    margin: 0;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/* Make sure paragraph doesn't create weird spacing */
+
+.shayari-piece p {
+    margin-top: 0;
+    margin-bottom: 0;
+
+    max-width: 100%;
+
+    line-height: 1.9;
+}
+
+
+/* Keep author at bottom when cards have different content */
+
+.shayari-piece .shayari-author {
+    margin-top: auto;
+    padding-top: 24px;
+}
+
+
+/* =========================================================
+   SUBTLE HOVER
+   ========================================================= */
+
+.shayari-piece:hover {
+    transform: translateY(-4px);
+}
+
+
+/* =========================================================
+   LONG / FEATURED SHAYARI
+   ========================================================= */
+
+/*
+   Long Shayari gets its own complete row.
+   This prevents it from visually climbing into
+   the cards above it.
+*/
+
+.shayari-piece.shayari-featured {
+    grid-column: 1 / -1;
+
+    width: 100%;
+
+    min-height: auto;
+
+    margin-top: 8px;
+
+    padding: 52px 64px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+
+/* Featured Shayari paragraph */
+
+.shayari-piece.shayari-featured p {
+    width: 100%;
+    max-width: 780px;
+
+    margin: 0 auto;
+
+    font-size: 1.12rem;
+    line-height: 2;
+
+    text-align: center;
+}
+
+
+/* Featured author */
+
+.shayari-piece.shayari-featured .shayari-author {
+    margin-top: 28px;
+    padding-top: 0;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   FEATURED CARD DECORATION
+   ========================================================= */
+
+/* Soft top line */
+
+.shayari-piece.shayari-featured::before {
+    content: "";
+
+    position: absolute;
+
+    top: 20px;
+    left: 50%;
+
+    width: 55px;
+    height: 1px;
+
+    transform: translateX(-50%);
+
+    opacity: 0.35;
+}
+
+
+/* Soft bottom line */
+
+.shayari-piece.shayari-featured::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: 20px;
+    left: 50%;
+
+    width: 55px;
+    height: 1px;
+
+    transform: translateX(-50%);
+
+    opacity: 0.35;
+}
+
+
+/* =========================================================
+   SHAYARI NUMBER
+   ========================================================= */
+
+.shayari-number {
+    flex-shrink: 0;
+
+    margin-bottom: 20px;
+
+    letter-spacing: 0.14em;
+
+    font-size: 0.72rem;
+
+    opacity: 0.55;
+}
+
+
+/* Featured number */
+
+.shayari-featured .shayari-number {
+    text-align: center;
+
+    margin-bottom: 24px;
+}
+
+
+/* =========================================================
+   SHAYARI AUTHOR
+   ========================================================= */
+
+.shayari-author {
+    display: block;
+
+    font-size: 0.78rem;
+
+    letter-spacing: 0.08em;
+
+    opacity: 0.65;
+}
+
+
+/* =========================================================
+   NORMAL CARD CONTENT BALANCE
+   ========================================================= */
+
+.shayari-piece:not(.shayari-featured) p {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* =========================================================
+   FEATURED SHAYARI — MORE BREATHING ROOM
+   ========================================================= */
+
+.shayari-piece.shayari-featured p br {
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   LARGE TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .shayari-collection {
+        column-gap: 24px;
+        row-gap: 42px;
+    }
+
+    .shayari-piece {
+        padding: 34px 30px;
+    }
+
+    .shayari-piece.shayari-featured {
+        padding: 46px 45px;
+
+        margin-top: 6px;
+    }
+
+    .shayari-piece.shayari-featured p {
+        max-width: 700px;
+
+        font-size: 1.08rem;
+        line-height: 1.95;
+    }
+}
+
+
+/* =========================================================
+   TABLET / SMALL SCREEN
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .shayari-collection {
+        grid-template-columns: 1fr;
+
+        column-gap: 0;
+
+        /*
+           IMPORTANT:
+           More vertical space between every Shayari.
+        */
+        row-gap: 30px;
+    }
+
+
+    .shayari-piece {
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 34px 28px;
+    }
+
+
+    /*
+       Featured card no longer needs a special
+       grid-column because there is only one column.
+    */
+
+    .shayari-piece.shayari-featured {
+        grid-column: auto;
+
+        width: 100%;
+
+        margin-top: 12px;
+
+        padding: 40px 30px;
+    }
+
+
+    .shayari-piece.shayari-featured p {
+        max-width: 650px;
+
+        font-size: 1.05rem;
+
+        line-height: 1.9;
+    }
+
+
+    .shayari-piece.shayari-featured .shayari-author {
+        margin-top: 24px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 550px) {
+
+    .shayari-collection {
+        row-gap: 24px;
+    }
+
+
+    .shayari-piece {
+        padding: 28px 22px;
+
+        border-radius: 18px;
+    }
+
+
+    .shayari-piece p {
+        font-size: 0.96rem;
+
+        line-height: 1.85;
+    }
+
+
+    .shayari-number {
+        margin-bottom: 16px;
+
+        font-size: 0.68rem;
+    }
+
+
+    .shayari-author {
+        padding-top: 20px;
+
+        font-size: 0.72rem;
+    }
+
+
+    /* Featured */
+
+    .shayari-piece.shayari-featured {
+        margin-top: 8px;
+
+        padding: 32px 22px;
+
+        border-radius: 20px;
+    }
+
+
+    .shayari-piece.shayari-featured p {
+        max-width: 100%;
+
+        font-size: 0.98rem;
+
+        line-height: 1.85;
+    }
+
+
+    .shayari-piece.shayari-featured .shayari-author {
+        margin-top: 22px;
+    }
+
+
+    /* Decorative lines */
+
+    .shayari-piece.shayari-featured::before {
+        top: 14px;
+
+        width: 42px;
+    }
+
+
+    .shayari-piece.shayari-featured::after {
+        bottom: 14px;
+
+        width: 42px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .shayari-collection {
+        row-gap: 20px;
+    }
+
+
+    .shayari-piece {
+        padding: 24px 18px;
+    }
+
+
+    .shayari-piece p {
+        font-size: 0.92rem;
+
+        line-height: 1.8;
+    }
+
+
+    .shayari-piece.shayari-featured {
+        padding: 30px 18px;
+    }
+
+
+    .shayari-piece.shayari-featured p {
+        font-size: 0.94rem;
+
+        line-height: 1.8;
+    }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .shayari-piece {
+        transition: none;
+    }
+
+    .shayari-piece:hover {
+        transform: none;
+    }
+}

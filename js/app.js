@@ -106,6 +106,8 @@ LafzonApp.init = function () {
 
     this.setupThoughtSlider();
 
+    this.setupMyWritings();
+
 };
 
 
@@ -2125,7 +2127,7 @@ LafzonApp.setupBookDownload = function () {
 
     const downloadButton =
         document.querySelector(
-            ".button-primary"
+            "#download .button-primary"
         );
 
     if (!downloadButton) return;
@@ -2416,6 +2418,802 @@ console.log(
     `
 );
 
+
+/* =========================================================
+   24. MY WRITINGS PAGE
+   ========================================================= */
+
+LafzonApp.setupMyWritings = function () {
+
+    const writingsPage =
+        document.getElementById("my-writings-page");
+
+    const openButton =
+        document.getElementById("openMyWritings");
+
+    const closeButton =
+        document.getElementById("closeMyWritings");
+
+    const topButton =
+        document.getElementById("writingsTopButton");
+
+
+    /*
+    ---------------------------------------------------------
+    SAFETY CHECK
+    ---------------------------------------------------------
+    */
+
+    if (!writingsPage) {
+        return;
+    }
+
+
+    /*
+    ---------------------------------------------------------
+    STATE
+    ---------------------------------------------------------
+    */
+
+    let pageIsOpen = false;
+
+    let previousBodyOverflow = "";
+
+    let previousBodyPosition = "";
+
+    let previousBodyWidth = "";
+
+
+    /*
+    ---------------------------------------------------------
+    OPEN MY WRITINGS
+    ---------------------------------------------------------
+    */
+
+    const openMyWritings = () => {
+
+        if (pageIsOpen) {
+            return;
+        }
+
+        pageIsOpen = true;
+
+
+        /*
+        Save existing body styles
+        */
+
+        previousBodyOverflow =
+            document.body.style.overflow;
+
+        previousBodyPosition =
+            document.body.style.position;
+
+        previousBodyWidth =
+            document.body.style.width;
+
+
+        /*
+        Open page
+        */
+
+        writingsPage.classList.add("is-open");
+
+        writingsPage.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+
+        /*
+        Prevent background page scrolling
+        */
+
+        document.body.style.overflow = "hidden";
+
+
+        /*
+        Start the writings page from top
+        */
+
+        writingsPage.scrollTop = 0;
+
+
+        /*
+        Focus page for keyboard accessibility
+        */
+
+        setTimeout(() => {
+
+            try {
+
+                writingsPage.focus({
+                    preventScroll: true
+                });
+
+            } catch (error) {
+
+                writingsPage.focus();
+
+            }
+
+        }, 100);
+
+
+        /*
+        Small page-open event
+        */
+
+        document.dispatchEvent(
+            new CustomEvent(
+                "lafzon:writings-opened"
+            )
+        );
+
+    };
+
+
+    /*
+    ---------------------------------------------------------
+    CLOSE MY WRITINGS
+    ---------------------------------------------------------
+    */
+
+    const closeMyWritings = () => {
+
+        if (!pageIsOpen) {
+            return;
+        }
+
+        pageIsOpen = false;
+
+
+        /*
+        Close page
+        */
+
+        writingsPage.classList.remove(
+            "is-open"
+        );
+
+        writingsPage.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+
+        /*
+        Restore body scrolling
+        */
+
+        document.body.style.overflow =
+            previousBodyOverflow;
+
+        document.body.style.position =
+            previousBodyPosition;
+
+        document.body.style.width =
+            previousBodyWidth;
+
+
+        /*
+        Return to author section
+        */
+
+        const authorSection =
+            document.getElementById("about-author") ||
+            document.getElementById("about-me") ||
+            document.querySelector(
+                ".about-author"
+            );
+
+
+        /*
+        Give browser a moment to
+        finish closing animation
+        */
+
+        setTimeout(() => {
+
+            if (authorSection) {
+
+                const header =
+                    document.querySelector(
+                        ".site-header"
+                    );
+
+                const headerHeight =
+                    header
+                        ? header.offsetHeight
+                        : 0;
+
+                const position =
+                    authorSection.getBoundingClientRect().top +
+                    window.scrollY -
+                    headerHeight -
+                    20;
+
+                window.scrollTo({
+
+                    top: Math.max(
+                        0,
+                        position
+                    ),
+
+                    behavior: "smooth"
+
+                });
+
+            }
+
+        }, 80);
+
+
+        /*
+        Notify other scripts
+        */
+
+        document.dispatchEvent(
+            new CustomEvent(
+                "lafzon:writings-closed"
+            )
+        );
+
+    };
+
+
+    /*
+    ---------------------------------------------------------
+    OPEN BUTTON
+    ---------------------------------------------------------
+    */
+
+    if (openButton) {
+
+        openButton.addEventListener(
+            "click",
+            event => {
+
+                event.preventDefault();
+
+                openMyWritings();
+
+            }
+        );
+
+    }
+
+
+    /*
+    ---------------------------------------------------------
+    BACK BUTTON
+    ---------------------------------------------------------
+    */
+
+    if (closeButton) {
+
+        closeButton.addEventListener(
+            "click",
+            event => {
+
+                event.preventDefault();
+
+                closeMyWritings();
+
+            }
+        );
+
+    }
+
+
+    /*
+    ---------------------------------------------------------
+    WRITINGS PAGE TOP BUTTON
+    ---------------------------------------------------------
+    */
+
+    if (topButton) {
+
+        topButton.addEventListener(
+            "click",
+            event => {
+
+                event.preventDefault();
+
+                writingsPage.scrollTo({
+
+                    top: 0,
+
+                    behavior: "smooth"
+
+                });
+
+            }
+        );
+
+    }
+
+
+    /*
+    ---------------------------------------------------------
+    SHOW / HIDE TOP BUTTON
+    ---------------------------------------------------------
+    */
+
+    const updateWritingsTopButton = () => {
+
+        if (!topButton) {
+            return;
+        }
+
+        if (
+            writingsPage.scrollTop > 500
+        ) {
+
+            topButton.classList.add(
+                "visible"
+            );
+
+        } else {
+
+            topButton.classList.remove(
+                "visible"
+            );
+
+        }
+
+    };
+
+
+    writingsPage.addEventListener(
+        "scroll",
+        updateWritingsTopButton,
+        {
+            passive: true
+        }
+    );
+
+
+    /*
+    ---------------------------------------------------------
+    ESCAPE KEY
+    ---------------------------------------------------------
+    */
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Escape" &&
+                pageIsOpen
+            ) {
+
+                closeMyWritings();
+
+            }
+
+        }
+    );
+
+
+    /*
+    ---------------------------------------------------------
+    PREVENT BACKGROUND INTERACTION
+    ---------------------------------------------------------
+    */
+
+    writingsPage.addEventListener(
+        "click",
+        event => {
+
+            /*
+            Keep clicks inside the writings page
+            from accidentally reaching background
+            */
+
+            event.stopPropagation();
+
+        }
+    );
+
+
+    /*
+    ---------------------------------------------------------
+    INITIAL STATE
+    ---------------------------------------------------------
+    */
+
+    writingsPage.classList.remove(
+        "is-open"
+    );
+
+    writingsPage.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    /*
+    ---------------------------------------------------------
+    PUBLIC METHODS
+    ---------------------------------------------------------
+    */
+
+    LafzonApp.openMyWritings =
+        openMyWritings;
+
+    LafzonApp.closeMyWritings =
+        closeMyWritings;
+
+};
+
+
+/* =========================================================
+   25. MY WRITINGS SCROLL REVEAL
+   ========================================================= */
+
+LafzonApp.setupWritingsReveal = function () {
+
+    const writingsPage =
+        document.getElementById(
+            "my-writings-page"
+        );
+
+    if (!writingsPage) {
+        return;
+    }
+
+
+    const revealElements =
+        writingsPage.querySelectorAll(
+            ".reveal"
+        );
+
+
+    if (!revealElements.length) {
+        return;
+    }
+
+
+    /*
+    ---------------------------------------------------------
+    FALLBACK
+    ---------------------------------------------------------
+    */
+
+    if (
+        !("IntersectionObserver" in window)
+    ) {
+
+        revealElements.forEach(
+            element => {
+
+                element.classList.add(
+                    "visible"
+                );
+
+            }
+        );
+
+        return;
+    }
+
+
+    /*
+    ---------------------------------------------------------
+    OBSERVER
+    ---------------------------------------------------------
+    */
+
+    const observer =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(
+                    entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                root: writingsPage,
+
+                threshold: 0.12,
+
+                rootMargin:
+                    "0px 0px -60px 0px"
+            }
+        );
+
+
+    revealElements.forEach(
+        element => {
+
+            observer.observe(
+                element
+            );
+
+        }
+    );
+
+};
+
+
+/* =========================================================
+   26. MY WRITINGS ACTIVE SECTION
+   ========================================================= */
+
+LafzonApp.setupWritingsSectionTracking = function () {
+
+    const writingsPage =
+        document.getElementById(
+            "my-writings-page"
+        );
+
+    if (!writingsPage) {
+        return;
+    }
+
+
+    const sections =
+        writingsPage.querySelectorAll(
+            ".writings-content-section, " +
+            ".voiceovers-section, " +
+            ".shayari-section, " +
+            ".featured-writing-section, " +
+            ".writing-philosophy-section, " +
+            ".writings-final-section"
+        );
+
+
+    if (!sections.length) {
+        return;
+    }
+
+
+    /*
+    Add a subtle active class while
+    a section is entering viewport.
+    */
+
+    if (
+        !("IntersectionObserver" in window)
+    ) {
+
+        return;
+
+    }
+
+
+    const observer =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(
+                    entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "writing-section-visible"
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                root: writingsPage,
+
+                threshold: 0.18
+            }
+        );
+
+
+    sections.forEach(
+        section => {
+
+            observer.observe(
+                section
+            );
+
+        }
+    );
+
+};
+
+
+/* =========================================================
+   27. MY WRITINGS VOICEOVER LINKS
+   ========================================================= */
+
+LafzonApp.setupVoiceoverLinks = function () {
+
+    const links =
+        document.querySelectorAll(
+            "#my-writings-page .voiceover-link"
+        );
+
+
+    if (!links.length) {
+        return;
+    }
+
+
+    links.forEach(
+        link => {
+
+            link.addEventListener(
+                "click",
+                event => {
+
+                    const href =
+                        link.getAttribute(
+                            "href"
+                        );
+
+
+                    /*
+                    If the link is still the
+                    placeholder YouTube URL,
+                    don't do anything special.
+                    */
+
+                    if (
+                        !href ||
+                        href === "#" ||
+                        href === "https://www.youtube.com/"
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    /*
+                    Open actual video
+                    in a new tab.
+                    */
+
+                    event.stopPropagation();
+
+                }
+            );
+
+        }
+    );
+
+};
+
+
+/* =========================================================
+   28. MY WRITINGS IMAGE PLAY BUTTON
+   ========================================================= */
+
+LafzonApp.setupVoiceoverVisuals = function () {
+
+    const visuals =
+        document.querySelectorAll(
+            "#my-writings-page .voiceover-visual"
+        );
+
+
+    if (!visuals.length) {
+        return;
+    }
+
+
+    visuals.forEach(
+        visual => {
+
+            visual.addEventListener(
+                "click",
+                () => {
+
+                    const parent =
+                        visual.closest(
+                            ".voiceover-item"
+                        );
+
+
+                    if (!parent) {
+                        return;
+                    }
+
+
+                    const link =
+                        parent.querySelector(
+                            ".voiceover-link"
+                        );
+
+
+                    if (!link) {
+                        return;
+                    }
+
+
+                    const href =
+                        link.getAttribute(
+                            "href"
+                        );
+
+
+                    if (
+                        href &&
+                        href !== "#" &&
+                        href !== "https://www.youtube.com/"
+                    ) {
+
+                        window.open(
+                            href,
+                            "_blank",
+                            "noopener,noreferrer"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+};
+
+
+/* =========================================================
+   29. MY WRITINGS INITIALIZATION
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        LafzonApp.setupWritingsReveal();
+
+        LafzonApp.setupWritingsSectionTracking();
+
+        LafzonApp.setupVoiceoverLinks();
+
+        LafzonApp.setupVoiceoverVisuals();
+
+    }
+);
+
+
+/* =========================================================
+   30. FINAL CONSOLE MESSAGE
+   ========================================================= */
+
+console.log(
+    "%cMy Writings system ready",
+    `
+        font-family: Georgia, serif;
+        font-size: 15px;
+        font-style: italic;
+        color: #9a6870;
+    `
+);
 
 /* =========================================================
    25. END
