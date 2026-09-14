@@ -1204,7 +1204,67 @@ LafzonApp.setupGalleryLightbox = function () {
    13. IMAGE FALLBACKS
    ========================================================= */
 
+LafzonApp.setupImageFallbacks = function () {
 
+    const images = document.querySelectorAll("img");
+
+    images.forEach(image => {
+
+        // Image ko completely non-clickable rakho
+        image.style.pointerEvents = "none";
+        image.style.userSelect = "none";
+        image.setAttribute("draggable", "false");
+
+        image.addEventListener("error", () => {
+
+            // Prevent infinite error loop
+            if (image.dataset.fallbackHandled) {
+                return;
+            }
+
+            image.dataset.fallbackHandled = "true";
+
+            image.classList.add("image-error");
+
+            const parent = image.parentElement;
+
+            if (!parent) return;
+
+            // Don't add fallback twice
+            if (parent.querySelector(".image-fallback")) {
+                return;
+            }
+
+            const fallback = document.createElement("div");
+
+            fallback.className = "image-fallback";
+
+            fallback.innerHTML = `
+                <div class="image-fallback-icon">
+                    ❀
+                </div>
+
+                <span>
+                    Image coming soon
+                </span>
+            `;
+
+            parent.appendChild(fallback);
+
+        });
+
+        // Handle already broken images
+        if (
+            image.complete &&
+            image.naturalWidth === 0 &&
+            image.src
+        ) {
+            image.dispatchEvent(new Event("error"));
+        }
+
+    });
+
+};
 
 
 /* =========================================================

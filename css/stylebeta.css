@@ -14147,6 +14147,13 @@ img {
     pointer-events: none !important;
 }
 
+/* All images are display-only */
+img {
+    pointer-events: none !important;
+    user-select: none !important;
+    -webkit-user-drag: none !important;
+    cursor: default !important;
+}
 /* =========================================================
    END — ENHANCED STYLE SHEET
    ========================================================= */
